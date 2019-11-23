@@ -1,0 +1,108 @@
+-- EXAMPLE SCRIPT --
+
+chance = 49.50
+base = 0.00000001
+bethigh = true
+
+nextbet = base  
+investprofit = 0
+wincount = 0
+losecount = 0
+stopnow = false
+first = true
+second = false
+secondwin = false
+third = false
+betcount = 1
+
+-- set profit target here (Final Balance after Winning)
+profittarget = balance * 1.1
+
+function dobet()
+
+  r = math.random(2)
+
+  if r == 1 then
+    bethigh = true
+  else
+    bethigh = false
+  end
+
+  if betcount == 1 then
+    betcount = 0
+    resetseed()
+  else
+    betcount = betcount + 1
+  end
+
+  if (balance) >= profittarget then
+    stop()
+    print(balance)
+    print("TARGET ACHIEVED!!!")
+    ching()
+  end
+
+  if (balance) < (nextbet) then
+    stop()
+    print(balance)
+    print("INSUFFICIENT FUNDS")
+    ching()
+  end
+
+  done = false
+
+  if win then
+    if(first) then
+      nextbet = base
+      if(stopnow) then 
+        stop() 
+      end
+    end
+
+    if(second) then
+      secondwin = true
+      second = false
+      third = true
+      done = true 
+    end
+
+    if(third and !done) then
+      if(secondwin) then          
+        nextbet = base
+        if(stopnow) then 
+          stop() 
+        end
+      else              
+          nextbet = previousbet * 1.6
+      end
+      third = false
+      first = true
+    end 
+  else
+    if(first and !done) then
+      first = false
+      second = true
+      done = true
+    end
+
+    if(second and !done) then
+      secondwin = false
+      second = false
+      third = true
+      done = true
+    end
+
+    if(third and !done) then
+      third = false
+      first = true
+      print("GO 4 THE WIN!!!")
+
+      if (secondwin) then 
+        nextbet = previousbet * 1.6
+      else
+        nextbet = previousbet * 4.5
+      end
+      done = true
+    end  
+  end
+end 
