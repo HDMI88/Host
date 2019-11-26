@@ -46,7 +46,7 @@
 <br />
 
 <p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>15. To minimize risks, you MUST TEST my bot with a few Doge coins, Lucky coin or any free coin for about 1 day to know how my bot working before set higher basebet or run your coin.</p>
-<p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>16. NCT Dicebot Script support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, BURST, XMR... and multiple websites: luckygames.io, luckyfish.io, casinoroyale.bet, wixiplay.io...and all dice sites of Dicebot.</p>
+<p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>16. NCT Dicebot Script support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, fffff BURST, XMR... and multiple websites: luckygames.io, luckyfish.io, casinoroyale.bet, wixiplay.io...and all dice sites of Dicebot.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>17. Recommended wallet:  <a href="http://bit.ly/2K7Vpef" target="_blank" style='color: #b6c301;'>http://bit.ly/2K7Vpef</a>. Supports all coins, exchange instantly between any coins, low fees, fast, 2-step security, simple and easy to use, mobile app. I'm using it...very good.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>18. Recommended website to buy and exchange instantly between any coins: <a href="http://bit.ly/2Ll3mOW" target="_blank" style='color: #b6c301;'>http://bit.ly/2Ll3mOW</a>. Support all coins, fast, simple, easy to use. I'm using it...very good.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>19. Recommended dice sites. Support DOGE, BTC, BCH, ETH, ETC, LTC, DASH, ZEC, XMR, BURST... high win rate, fast, unlimited bet amount:</p>
