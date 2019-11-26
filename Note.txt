@@ -40,7 +40,7 @@
 <p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>3. Set Target profit: 10%.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>4. Set Largest Loss Amount (STOP LOSS): 100% or up to you.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>5. Contact me every day to update latest NCT Dicebot Script.</p>
-<p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>6. Do not play bigbalance. High risk, you will lose quickly:</p>
+<p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>6. Do not play bigbalance. High risk, you will lose quickly:</p> 
 <p class = 'TheP' style = 'padding: 3px 0px 0px 60px !important;'>1. Safe balance: 50$. </p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 60px !important;'>2. Maximum balance: 100$.</p>
 <br />
