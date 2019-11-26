@@ -42,7 +42,7 @@
 <p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>5. Contact me every day to update latest NCT Dicebot Script.</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 40px !important;'>6. Do not play bigbalance. High risk, you will lose quickly:</p>
 <p class = 'TheP' style = 'padding: 3px 0px 0px 60px !important;'>1. Safe balance: 50$. </p>
-<p class = 'TheP' style = 'padding: 3px 0px 0px 60px !important;'>2. Maximum balance: 100$.</p> 
+<p class = 'TheP' style = 'padding: 3px 0px 0px 60px !important;'>2. Maximum balance: 100$.</p>
 <br />
 
 <p class = 'TheP' style = 'padding: 3px 0px 0px 20px !important;'>15. To minimize risks, you MUST TEST my bot with a few Doge coins, Lucky coin or any free coin for about 1 day to know how my bot working before set higher basebet or run your coin.</p>
