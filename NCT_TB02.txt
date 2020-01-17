@@ -13,14 +13,15 @@
 
 - Information about NCT Dicebot and NCT Dicebot Script:
     1. Support any Dicebot script(Lua script) and Javascript.
-    2. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
-    3. Many options to play: NCT strategy, Settings Mode and Programmer Mode like Dicebot.
-    1. Support low balance. MINIMUM BALANCE for all coins: 0.015.
-    2. High win rate. Auto change seed.
-    3. You can manually change Basebet, Target Profit and Stop Lose.
-    4. Update script daily. Lifetime support.
-    5. Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, USDT and more...
-    6. Support multiple websites: Luckygames.io, Luckyfish.io, Casinoroyale.bet, Wixiplay.io, Wolf.Bet... and all dice sites of Dicebot:
+    2. Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
+    3. Support "Settings mode" like Dicebot. You can run your own settings.
+    4. Many options to play: NCT strategy, Settings Mode and Programmer Mode.
+    5. High win rate. Auto change seed.
+    6. You can manually change Basebet, Target Profit and Stop Lose.
+    7. Update script daily. Lifetime support.
+    8. Support low balance. MINIMUM BALANCE for all coins: 0.015. Ex: 0.015 BTC, 0.015 BCH, 0.015 ETH, 0.015 ETC, 0.015 LTC, 0.015 DOGE, 0.015 USDT...
+    9. Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, USDT and more...
+    10. Support multiple websites: Luckygames.io, Luckyfish.io, Casinoroyale.bet, Wixiplay.io, Wolf.Bet... and all dice sites of Dicebot:
         1. 999Dice
         2. Wolf.Bet
         3. Prime Dice
