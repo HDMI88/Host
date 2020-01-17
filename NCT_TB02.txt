@@ -12,6 +12,7 @@
 	 
 
 - Information about NCT Dicebot and NCT Dicebot Script:
+
     1. Support any Dicebot script(Lua script) and Javascript.
     2. Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
     3. Support "Settings mode" like Dicebot. You can run your own settings.
