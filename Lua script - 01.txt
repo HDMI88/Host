@@ -37,7 +37,7 @@ function dobet()
   if (balance) >= profittarget then
     stop()
     print(balance)
-    print("TARGET ACHIEVED!!!")
+    print("TARGET ACHIEVED")
     ching()
   end
 
@@ -94,7 +94,7 @@ function dobet()
     if(third and !done) then
       third = false
       first = true
-      print("GO 4 THE WIN!!!")
+      print("GO 4 THE WIN")
 
       if (secondwin) then 
         nextbet = previousbet * 1.6
