@@ -20,7 +20,7 @@ profittarget = balance * 1.1
 
 function dobet()
 
-  r = math.random(2)
+  r = math.random(1, 2)
 
   if r == 1 then
     bethigh = true
