@@ -1,4 +1,5 @@
 -- EXAMPLE SCRIPT --
+
 chance       = 50                    
 base         = balance * 0.00000010 
 base1        = balance * 0.00000020          
