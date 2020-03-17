@@ -1,107 +1,87 @@
 -- EXAMPLE SCRIPT --
+chance       = 50                    
+base         = balance * 0.00000010 
+base1        = balance * 0.00000020          
+target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
 
-chance = 49.50
-base = 0.00000001
-bethigh = true
-
-nextbet = base  
-investprofit = 0
-wincount = 0
-losecount = 0
-stopnow = false
-first = true
-second = false
-secondwin = false
-third = false
-betcount = 1
-
--- set profit target here (Final Balance after Winning)
-profittarget = balance * 1.1
+base2        = base1
+nextbet      = base
+bethigh      = false
+balance2     = balance
+multiplier   = 1.18
 
 function dobet()
 
-  r = math.random(1, 2)
-
-  if r == 1 then
-    bethigh = true
-  else
-    bethigh = false
-  end
-
-  if betcount == 1 then
-    betcount = 0
-  else
-    betcount = betcount + 1
-  end
-
-  if (balance) >= profittarget then
-    stop()
-    print(balance)
-    print("TARGET ACHIEVED")
-    ching()
-  end
-
-  if (balance) < (nextbet) then
-    stop()
-    print(balance)
-    print("INSUFFICIENT FUNDS")
-    ching()
-  end
-
-  done = false
-
-  if win then
-    if(first) then
-      nextbet = base
-      if(stopnow) then 
-        stop() 
-      end
-    end
-
-    if(second) then
-      secondwin = true
-      second = false
-      third = true
-      done = true 
-    end
-
-    if(third and !done) then
-      if(secondwin) then          
-        nextbet = base
-        if(stopnow) then 
-          stop() 
+    if balance > balance2 then
+        base2    = base * 1.5
+        balance2 = balance
+    else
+        base2 = balance2 - balance
+        if base2 < base * 1.5 then
+            base2 = base * 1.5
         end
-      else              
-          nextbet = previousbet * 1.6
-      end
-      third = false
-      first = true
-    end 
-  else
-    if(first and !done) then
-      first = false
-      second = true
-      done = true
     end
 
-    if(second and !done) then
-      secondwin = false
-      second = false
-      third = true
-      done = true
+    bethigh = true
+
+    if balance < nextbet then
+        stop()
+        print(balance)
+        print("You lose!")
     end
 
-    if(third and !done) then
-      third = false
-      first = true
-      print("GO 4 THE WIN")
+    if balance >= target then
+        stop()
+        print("\n\n")
+        print (">>> Profit reached: " .. profit)
+        print("\n\n")
+    end
 
-      if (secondwin) then 
-        nextbet = previousbet * 1.6
-      else
-        nextbet = previousbet * 4.5
-      end
-      done = true
-    end  
-  end
-end 
+    if base2 < base1 then
+        base2 = base1
+    end
+
+    chance = math.random(30, 55)
+
+    if profit > 0 then
+        base2 = base1
+    end
+
+    if win then
+        chance  = math.random(10, 15)
+        nextbet = base
+    else
+        nextbet = previousbet * multiplier
+    end
+
+    if currentstreak == -1 then
+        chance  = math.random(10, 15)
+        nextbet = base2 * 1.18
+    end
+
+    if currentstreak == -2 then
+        chance  = math.random(10, 15)
+        nextbet = previousbet
+    end
+
+    if currentstreak == -2 then
+        base2 = previousbet
+    end
+
+    if currentstreak == -3 then
+        chance  = math.random(10, 15)
+        nextbet = previousbet
+    end
+
+    if currentstreak == -3 then
+        base2 = previousbet
+    end
+
+    if currentstreak == -4 then
+        nextbet = (balance2 - balance) * multiplier
+        chance  = math.random(15, 50)
+    end
+
+    print("currentstreak = "..currentstreak)
+    print("chance = "..chance)
+end
