@@ -11,7 +11,7 @@
 - Accept all coins payments. After you have completed the payment, i will send bot, script, license and share tips for you.
 	 
 
-❤️ Information about NCT Dicebot Script:
+❤️ Information about NCT Dicebot:
    1. 👉 Many options to play: NCT Strategy, Settings Mode and Programmer Mode.
    2. 👉 You can manually change Basebet, Target Profit and Stop Loss.
    3. 👉 Update script, change strategies daily to minimize risks.
