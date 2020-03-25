@@ -11,15 +11,15 @@
 - Accept all coins payments. After you have completed the payment, i will send bot, script, license and share tips for you.
 	 
 
-❤️ Information about NCT Dicebot:
-   1. 👉 Many options to play: NCT Strategy, Settings Mode and Programmer Mode.
-   2. 👉 You can manually change Basebet, Target Profit and Stop Loss.
-   3. 👉 Update script, change strategies daily to minimize risks.
-   4. 👉 Support any Dicebot script(Lua script) and Javascript.
-   5. 👉 Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
-   6. 👉 Support "Settings mode" like Dicebot. You can run your own settings.
-   7. 👉 Support low balance. High win rate. Auto change seed.
-   8. 👉 Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...of sites:
+- Information about NCT Dicebot:
+   1. Many options to play: NCT Strategy, Settings Mode and Programmer Mode.
+   2. You can manually change Basebet, Target Profit and Stop Loss.
+   3. Update script, change strategies daily to minimize risks.
+   4. Support any Dicebot script(Lua script) and Javascript.
+   5. Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
+   6. Support "Settings mode" like Dicebot. You can run your own settings.
+   7. Support low balance. High win rate. Auto change seed.
+   8. Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...of sites:
           1. Luckygames
           2. Luckyfish
           3. Casinoroyale
@@ -28,7 +28,7 @@
           6. Gigabet
           ....more than 10 bots
    
-   9. 👉 Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...and all sites of Dicebot:
+   9. Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...and all sites of Dicebot:
           1. 999Dice
           2. Wolf
           3. Prime Dice
