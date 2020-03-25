@@ -2,46 +2,51 @@
 
     1. Telegram: https://t.me/NCTDicebot 
     2. Email: nctgrape@gmail.com
-    3. Telegram channel: https://t.me/NCTDicebot_Channel
-    4. My youtube channel -  NCT Dicebot: https://www.youtube.com/channel/UCq4wIDVzyClo9WnHWh4xjYQ/videos
-    5. Blog: https://nctdicebot.blogspot.com
-    6. I only use 1 account on Telegram: https://t.me/NCTDicebot and Email: nctgrape@gmail.com. All others are scammers.
+    3. Website: www.ncttechnology.net
+    4. Telegram channel: https://t.me/NCTDicebot_Channel
+    5. My youtube channel -  NCT Dicebot: www.youtube.com/c/NCTDicebot
+    6. I only use 1 account on Telegram: t.me/NCTDicebot and Email: nctgrape@gmail.com. All others are scammers.
 
 
 - Accept all coins payments. After you have completed the payment, i will send bot, script, license and share tips for you.
 	 
 
-- Information about NCT Dicebot and NCT Dicebot Script:
-
-    1. Support any Dicebot script(Lua script) and Javascript.
-    2. Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
-    3. Support "Settings mode" like Dicebot. You can run your own settings.
-    4. Many options to play: NCT strategy, Settings Mode and Programmer Mode.
-    5. High win rate. Auto change seed.
-    6. You can manually change Basebet, Target Profit and Stop Lose.
-    7. Update script daily. Lifetime support.
-    8. Support low balance. MINIMUM BALANCE for all coins: 0.015. Ex: 0.015 BTC, 0.015 BCH, 0.015 ETH, 0.015 ETC, 0.015 LTC, 0.015 DOGE, 0.015 USDT...
-    9. Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, USDT and more...
-    10. Support multiple websites: Luckygames.io, Luckyfish.io, Casinoroyale.bet, Wixiplay.io, Wolf.Bet... and all dice sites of Dicebot:
-        1. 999Dice
-        2. Wolf.Bet
-        3. Prime Dice
-        4. YoloDice
-        5. Stake
-        6. Bitsler
-        7. DuckDice
-        8. Freebitco.in
-        9. BetKing
-        10. Bitdice
-        11. Bit-Exo
-        12. BitVest
-        13. Crypto-games 
-        14. Ethercrash.io
-        15. Just-dice
-        16. KingDice
-        17. Mega Dice
-        18. Nitrodice
-        19. NitrogenSports 
-        20. SafeDice
-        21. WinDice
-        and more...
+❤️ Information about NCT Dicebot Script:
+   1. 👉 Many options to play: NCT Strategy, Settings Mode and Programmer Mode.
+   2. 👉 You can manually change Basebet, Target Profit and Stop Loss.
+   3. 👉 Update script, change strategies daily to minimize risks.
+   4. 👉 Support any Dicebot script(Lua script) and Javascript.
+   5. 👉 Support "Programmer Mode" like Dicebot. You can code your own strategy using a Lua script or Javascript. And then run it on all my bots.
+   6. 👉 Support "Settings mode" like Dicebot. You can run your own settings.
+   7. 👉 Support low balance. High win rate. Auto change seed.
+   8. 👉 Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...of sites:
+          1. Luckygames
+          2. Luckyfish
+          3. Casinoroyale
+          4. Wixiplay
+          5. Wolf
+          6. Gigabet
+          ....more than 10 bots
+   
+   9. 👉 Support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...and all sites of Dicebot:
+          1. 999Dice
+          2. Wolf
+          3. Prime Dice
+          4. YoloDice
+          5. Stake
+          6. Bitsler
+          7. DuckDice
+          8. Freebitco
+          9. Bitdice
+          10. Bit-Exo
+          11. BitVest
+          12. Crypto-games 
+          13. Ethercrash
+          14. Just-dice
+          15. KingDice
+          16. Mega Dice
+          17. Nitrodice
+          18. NitrogenSports 
+          29. SafeDice
+          20. WinDice
+          ... and more
