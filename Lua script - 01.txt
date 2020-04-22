@@ -1,40 +1,88 @@
-basebet = balance * 0.00000010
-nextbet = basebet
-chance = 95
-bethigh = true
-losecount = 0
-targetprofit  = balance * 1.1
+-- EXAMPLE SCRIPT --
+
+chance       = 50                    
+base         = balance * 0.00000010 
+base1        = balance * 0.00000020          
+target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+
+base2        = base1
+nextbet      = base
+bethigh      = false
+balance2     = balance
+multiplier   = 1.18
 
 function dobet()
-   if balance >= targetprofit then
-     stop()
-     print("\n\n")
-     print (">>> Profit reached: " .. string.format("%.8f", profit))
-     print (">>> Running NCT Dicebot Lua script 04 - Fast profit")
-     print("\n\n")
-   end
 
-   if (win) then
-      chance = math.random(94,95)
-      nextbet = basebet
-      losecount = 0
-   else
-      losecount += 1
-      if (losecount > 1) then
-         nextbet = previousbet * 2
-         chance = (1/(((nextbet + (nextbet - basebet))/nextbet))) * 100
-         if chance < 45.45 then
-            chance = 45.45 
-         end
-         bethigh = !bethigh
-      else
-         nextbet = previousbet * 1.9
-         chance = (1/(((basebet + nextbet))/nextbet)) * 100
-         if chance < 45.45 then
-            chance = 45.45 
-         end
-         bethigh = !bethigh
-      end
-   end
-   print("losecount: " .. losecount)
+    if balance > balance2 then
+        base2    = base * 1.5
+        balance2 = balance
+    else
+        base2 = balance2 - balance
+        if base2 < base * 1.5 then
+            base2 = base * 1.5
+        end
+    end
+
+    bethigh = true
+
+    if balance < nextbet then
+        stop()
+        print(balance)
+        print("You lose!")
+    end
+
+    if balance >= target then
+        stop()
+        print("\n\n")
+        print (">>> Profit reached: " .. profit)
+        print("\n\n")
+    end
+
+    if base2 < base1 then
+        base2 = base1
+    end
+
+    chance = math.random(30, 55)
+
+    if profit > 0 then
+        base2 = base1
+    end
+
+    if win then
+        chance  = math.random(10, 15)
+        nextbet = base
+    else
+        nextbet = previousbet * multiplier
+    end
+
+    if currentstreak == -1 then
+        chance  = math.random(10, 15)
+        nextbet = base2 * 1.18
+    end
+
+    if currentstreak == -2 then
+        chance  = math.random(10, 15)
+        nextbet = previousbet
+    end
+
+    if currentstreak == -2 then
+        base2 = previousbet
+    end
+
+    if currentstreak == -3 then
+        chance  = math.random(10, 15)
+        nextbet = previousbet
+    end
+
+    if currentstreak == -3 then
+        base2 = previousbet
+    end
+
+    if currentstreak == -4 then
+        nextbet = (balance2 - balance) * multiplier
+        chance  = math.random(15, 50)
+    end
+
+    print("currentstreak = "..currentstreak)
+    print("chance = "..chance)
 end
