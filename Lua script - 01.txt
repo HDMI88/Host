@@ -9,7 +9,7 @@ base2        = base1
 nextbet      = base
 bethigh      = false
 balance2     = balance
-multiplier   = 1.18
+multi        = 1.18
 
 function dobet()
 
@@ -52,7 +52,7 @@ function dobet()
         chance  = math.random(10, 15)
         nextbet = base
     else
-        nextbet = previousbet * multiplier
+        nextbet = previousbet * multi
     end
 
     if currentstreak == -1 then
@@ -79,7 +79,7 @@ function dobet()
     end
 
     if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multiplier
+        nextbet = (balance2 - balance) * multi
         chance  = math.random(15, 50)
     end
 
