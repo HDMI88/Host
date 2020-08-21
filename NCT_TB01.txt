@@ -1,5 +1,5 @@
 1. Please read all lines carefully and always follow everything in "ATTENTION". IF NOT...DON'T RUN NCT DICEBOT.
 
-2. Because a lot of people use NCT Dicebot, they also run "NCT Strategy". So, to minimize risks, never run a fixed strategy or a fixed Lua script. You must change, combine many different strategies, many different settings, many different Lua script. Example: run your setting in "Advanced Mode" and run your Lua script in "Programmer Mode".
+2. To minimize risks, never run a fixed strategy or a fixed Lua script. You must change, combine many different strategies, many different settings, many different Lua script. Example: run your setting in "Advanced Mode" about 5 minutes then run your Lua script in "Programmer Mode" about 10 minutes then run NCT Strategy about 5 minutes.
 
 3. Remember: Gambling is gambling no matter what you do or how good your strategy is. The house always wins if you keep playing.  WINNERS KNOW WHEN TO STOP.
