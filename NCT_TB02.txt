@@ -6,7 +6,7 @@
   4. I only use 1 account on Telegram: t.me/NCTDicebot and Email: nctgrape@gmail.com. All others are scammers.
 
 * Accept all coins payments. After you have completed the payment, i will send bot, script, license and share tips for you.
-	 
+   
 * Information about NCT Dicebot:
   - Update script, change strategies daily to minimize risks.
   - Support any balance, any coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST....
