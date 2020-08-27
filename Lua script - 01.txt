@@ -80,7 +80,7 @@ function dobet()
 
     if currentstreak == -4 then
         nextbet = (balance2 - balance) * multi
-        chance  = math.random(15, 50)
+        chance  = math.random(65, 75)
     end
 
     print("currentstreak = "..currentstreak)
