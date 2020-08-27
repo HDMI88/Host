@@ -1,4 +1,4 @@
--- EXAMPLE SCRIPT --
+-- EXAMPLE SCRIPT. UPDATED: 28/08/2020 --
 
 chance       = 50                    
 base         = balance * 0.00000010 
