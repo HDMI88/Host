@@ -1,4 +1,4 @@
--- EXAMPLE SCRIPT. UPDATED: 28/08/2020 --
+-- EXAMPLE SCRIPT. UPDATED: 30/08/2020 --
 
 chance       = 50                    
 base         = balance * 0.00000010 
@@ -86,7 +86,7 @@ function dobet()
 
     if currentstreak == -4 then
         nextbet = (balance2 - balance) * multi
-        chance  = math.random(65, 75)
+        chance  = math.random(35, 65)
     end
 
     print("currentstreak = "..currentstreak)
