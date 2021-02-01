@@ -1,23 +1,16 @@
 - A. Địa chỉ ví Coinomi:
-1.  My BTC address:   1JvfagibJKxP6CJMgNV4Bd1aSxCP4LEiaf 
-
+1.  My BTC address:   1JvfagibJKxP6CJMgNV4Bd1aSxCP4LEiaf                              	
 2.  My BCH address:   qrps7wasjqdgyrt8l6nj83tngme55lmzyvj2kt7k8g
-
-3.  My ETH address:   0xc3c31d194EF5c3408273Ee2163f32ae727a5AE32
-
-4.  My LTC address:   LSuXdwJH1qQsVJPmyiB5MLvFQr6gMfiGF2
-
+3.  My ETH address:   0xc3c31d194EF5c3408273Ee2163f32ae727a5AE32						
+4.  My LTC address:   LSuXdwJH1qQsVJPmyiB5MLvFQr6gMfiGF2								
 5.  My DOGE address:  DDgLY6mqgipubPHRvs4yvvVAi6zbAAY6eV
-
 6.  My ETC address:   0x9b16F651e4B92cC3bB978ee96aE1a830896EdE25
-
 8.  My BTG address:   AdFP4D41gMAzb2oXGueBLNgiKfXUkHYhBE
-
-9.  My XRP address:   rpHn6wYN4ttLZ8gQZgw4b4DSHFTyCCNtkU
-
-10. My TRON address:  TYkJxtpS126Pz9sVThMEQuknmTfyQzfqFP
-
+9.  My XRP address:   rpHn6wYN4ttLZ8gQZgw4b4DSHFTyCCNtkU								
+10. My TRX address:   TUzMi9admR65vU8cvDpDjLR9jVGms7TeRT
 11. My DASH address:  XpUfY9Jgi9EJzRHuaELpaUSK8v5GoXt5qB
+12. My XLM address:   GD33QBHRPHI5APFSUVMHJN7SVZK5DCMS4EOXO3TC2NBZ3HA7JXCT75Z3     Memo - ID: 9645        //Dùng ví Luckyfish
+12. My USDT address:  0x1bc95acfb5e849d51349b823bdd968eb2bfcd4f5                                          //Dùng ví Luckyfish
 
 
 
@@ -57,7 +50,7 @@
 ✳️ Differences between the lifetime license plans: Pro 1 (150$), Pro 2 (250$) and Pro 3 (500$):
 
 🔴 Pro 1 (150$):
-	1. 👉 One license is for only one device. You cannot change or switch devices. For example, when you buy a new computer, you must purchase a new license.
+	1. 👉 One license is for only one device. You cannot switch devices. For example, when you buy a new computer, you must purchase a new license.
 	2. 👉 In the future, I will update many new dice sites and many new features. Pro 1 (150$) will not be updated all the latest features and the latest dice sites. You must purchase a new license to updated all the latest features and the latest dice sites.
 
 🟢 Pro 2 (250$):
