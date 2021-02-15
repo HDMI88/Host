@@ -37,7 +37,7 @@
 </div > 
 
 <div>
-A. STT: 0 - NCT.
+A. STT: 0 - NCT. 
 B. Bắt Đầu: 01/08/2020 18:03:39.863 - axBiHX626KLk
 	1. Phiên Bản:
 		1. NCT Dicebot V1.1.7
