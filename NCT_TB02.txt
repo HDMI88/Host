@@ -1,4 +1,4 @@
-* Please buy full version: 10$. Support and update daily scripts. Contact me: 
+* Please buy full version: 5$. Support and update daily scripts. Contact me: 
 
   1. Telegram: t.me/NCTDicebot 
   2. Email: nctgrape@gmail.com
@@ -6,45 +6,14 @@
   4. I only use 1 account on Telegram: t.me/NCTDicebot and Email: nctgrape@gmail.com. All others are scammers.
 
 * Accept all coins payments. After you have completed the payment, i will send bot, script, license and share tips for you.
-   
+
 * Information about NCT Dicebot:
   - Update script, change strategies daily to minimize risks.
   - Support any balance, any coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST....
+  - Supports all coins and over 25 betting sites (and more in the future): Luckyfish, Gigabet, Wolf, Primedice, Stake, Betfury, BC.Game, Yolodice, 999Dice, Bitsler, Duckdice, Casinoroyale, Paradice, Bitvest, Freebicoin, Windice, Sicodice, Bit-exo, Bitdice, CryptoGames, Seuntjie Dicebot...
   - Many options to play: NCT Strategy, Advanced Mode and Programmer Mode.
     1. NCT Strategy: 10 different strategies have been optimized to minimize risks and deliver stable profits.
     2. Advanced Mode: you can run your own settings (like Seuntjie Dicebot).
     3. Programmer Mode: Support any Lua script (like Seuntjie Dicebot). You can code your own strategy using a Lua script, and then run it on all dice sites in NCT Dicebot (more than 15 dice sites) and Seuntjie Dicebot.
-
-* NCT Dicebot supports 15 dice sites (and more in the future):
-  1. Luckyfish
-  2. Primedice
-  3. Stake
-  4. Casinoroyale
-  5. Wixiplay
-  6. Wolf.Bet
-  7. Gigabet
-  8. Luckygames 
-  9. more than 15 dice sites.
-  
-* NCT Dicebot - Seuntjie support all coins: BTC, BCH, ETH, ETC, LTC, DOGE, DASH, ZEC, XMR, BURST...and all dice sites of Seuntjie Dicebot:
-  1. 999Dice
-  2. Bitdice
-  3. Bit-Exo
-  4. Bitsler
-  5. BitVest.IO
-  6. crypto-games
-  7. DuckDice
-  8. thercrash.io
-  9. Freebitco.in
-  1. Just-dice
-  11. Mega Dice
-  12. Nitrodice
-  13. NitrogenSports
-  14. Prime Dice
-  15. SafeDice
-  16. Stake
-  17. WinDice
-  18. Wolf.Bet
-  19. YoloDice
 
 * You cannot find any professional bot and more features than NCT Dicebot.
