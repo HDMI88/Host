@@ -1,466 +1,398 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://www.ncttechnology.net/assets/js//b-lua-beautifier.min.js" type="text/javascript" charset="utf-8"></script> -->
-    <style>
-      body 
-      {
-        display: flex;
-        justify-content: center;
-        padding: 3rem;
-        background: #272635;
-        color: #2C2C2C;
-      }
+<style>
+<!--
+    .tabs 
+  {
+    max-width: 60rem;
+    display: flex;
+  }
 
-      .tabs 
-      {
-        max-width: 60rem;
-        display: flex;
-      }
+  .tabs > ul 
+  {
+    list-style-type: none;
+    padding: 0;
+  }
 
-      .tabs > ul 
-      {
-        list-style-type: none;
-        padding: 0;
-      }
+  .tabs > ul li 
+  {
+    display: block;
+    text-align: center;
+  }
 
-      .tabs > ul li 
-      {
-        display: block;
-        text-align: center;
-      }
+  .tabs > ul li a 
+  {
+    display: block;
+    text-decoration: none;
+    background: #11111A;
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease-in-out;
+  }
 
-      .tabs > ul li a 
-      {
-        display: block;
-        text-decoration: none;
-        background: #11111A;
-        padding: 1rem 1.5rem;
-        color: rgba(255, 255, 255, 0.6);
-        transition: all 0.2s ease-in-out;
-      }
+  .tabs > ul li a.active 
+  {
+    background: #fff;
+    color: #2C2C2C;
+  }
 
-      .tabs > ul li a.active 
-      {
-        background: #fff;
-        color: #2C2C2C;
-      }
+  .tabs > ul li a:hover:not(.active) 
+  {
+    color: #fff;
+  }
 
-      .tabs > ul li a:hover:not(.active) 
-      {
-        color: #fff;
-      }
+  .tabs section 
+  {
+    background: #fff;
+    padding: 10px 10px 10px 10px;
+    display: none;
+  }
 
-      .tabs section 
-      {
-        background: #fff;
-        padding: 10px 10px 10px 10px;
-        display: none;
-      }
+  .tabs section.active 
+  {
+    display: block;
+  }
 
-      .tabs section.active 
-      {
-        display: block;
-      }
+  .ace_editor 
+  {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    font: 18px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    direction: ltr;
+    text-align: left;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 
-      .ace_editor 
-      {
-        position: relative;
-        overflow: hidden;
-        padding: 0;
-        font: 18px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
-        direction: ltr;
-        text-align: left;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
+  .ace_scrollbar 
+  {
+    display: none !important;
+  }
 
-      .ace_scrollbar 
-      {
-        display: none !important;
-      }
+  .editor
+  {
+    width: 100%; 
+    height: 100%;
+  }
+-->
+</style>
 
-      .editor
-      {
-        width: 100%; 
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="tabs">
-      <ul id="tab-links" style ="max-width: 90px; min-width: 90px; margin: 0px;">
-        <li><a href="#tab-1" class="active"><i class="fas fa-code"></i>Script 1</a></li>
-        <li><a href="#tab-2"><i class="fas fa-code"></i>Script 2</a></li>
-        <li><a href="#tab-3"><i class="fas fa-code"></i>Script 3</a></li>
-        <li><a href="#tab-4"><i class="fas fa-code"></i>Script 4</a></li>
-        <li><a href="#tab-5"><i class="fas fa-code"></i>Script 5</a></li>
-        <li><a href="#tab-6"><i class="fas fa-code"></i>Script 6</a></li>
-        <li><a href="#tab-7"><i class="fas fa-code"></i>Script 7</a></li>
-        <li><a href="#tab-8"><i class="fas fa-code"></i>Script 8</a></li>
-        <li><a href="#tab-9"><i class="fas fa-code"></i>Script 9</a></li>
-        <li><a href="#tab-10"><i class="fas fa-code"></i>Script 10</a></li>
-        <li><a href="#tab-11"><i class="fas fa-code"></i>Script 11</a></li>
-        <li><a href="#tab-12"><i class="fas fa-code"></i>Script 12</a></li>
-        <li><a href="#tab-13"><i class="fas fa-code"></i>Script 13</a></li>
-        <li><a href="#tab-14"><i class="fas fa-code"></i>Script 14</a></li>
-        <li><a href="#tab-15"><i class="fas fa-code"></i>Script 15</a></li>
-      </ul>
+<div class="tabs">
+  <ul id="tab-links" style ="max-width: 90px; min-width: 90px; margin: 0px;">
+    <li><a href="#tab-1" class="active"><i class="fas fa-code"></i>Script 1</a></li>
+    <li><a href="#tab-2"><i class="fas fa-code"></i>Script 2</a></li>
+    <li><a href="#tab-3"><i class="fas fa-code"></i>Script 3</a></li>
+    <li><a href="#tab-4"><i class="fas fa-code"></i>Script 4</a></li>
+    <li><a href="#tab-5"><i class="fas fa-code"></i>Script 5</a></li>
+    <li><a href="#tab-6"><i class="fas fa-code"></i>Script 6</a></li>
+    <li><a href="#tab-7"><i class="fas fa-code"></i>Script 7</a></li>
+    <li><a href="#tab-8"><i class="fas fa-code"></i>Script 8</a></li>
+    <li><a href="#tab-9"><i class="fas fa-code"></i>Script 9</a></li>
+    <li><a href="#tab-10"><i class="fas fa-code"></i>Script 10</a></li>
+    <li><a href="#tab-11"><i class="fas fa-code"></i>Script 11</a></li>
+    <li><a href="#tab-12"><i class="fas fa-code"></i>Script 12</a></li>
+    <li><a href="#tab-13"><i class="fas fa-code"></i>Script 13</a></li>
+    <li><a href="#tab-14"><i class="fas fa-code"></i>Script 14</a></li>
+    <li><a href="#tab-15"><i class="fas fa-code"></i>Script 15</a></li>
+  </ul>
 
-      <section id="tab-1" class="active">
-        <h3>Code</h3>
-        <p>Thousands of free tutorials and online courses to help you learn software development from mobile devices to web applications and everything in between.</p>
-        <p>Join our community to improve your coding skills and workflow. What would you like to learn?</p>
-        <button onclick="Copy()">Copy</button>
-        <div class="editor">chance    = 33
-          base      = 0.0000002
-          nextbet   = 0.0000002
-          losecount = 0
-          target    = balance + balance/10
-          a         = 0
-          i         = balance*0.99
-          k         = 100
-          roll      = 0
-          function dobet()
-          roll = roll + 1
-          if balance > target then stop() end
+  <section id="tab-1" class="active">
+    <h3>Code</h3>
+    <p>Thousands of free tutorials and online courses to help you learn software development from mobile devices to web applications and everything in between.</p>
+    <p>Join our community to improve your coding skills and workflow. What would you like to learn?</p>
+    <button onclick="Copy()">Copy</button>
+    <div class="editor">chance    = 33
+      base      = 0.0000002
+      nextbet   = 0.0000002
+      losecount = 0
+      target    = balance + balance/10
+      a         = 0
+      i         = balance*0.99
+      k         = 100
+      roll      = 0
+      function dobet()
+      roll = roll + 1
+      if balance > target then stop() end
 
-          if a==16 then
-          bethigh=!bethigh
-          resetseed()
-          a=0
-          end
+      if a==16 then
+      bethigh=!bethigh
+      resetseed()
+      a=0
+      end
 
-          if win then
-          a = a + 1
-            nextbet = base
-            chance = 20
-            losecount = 0
-           else
-            nextbet = previousbet*1.33
-            losecount+=1
-          end
-          if (losecount >= 6) then
-             nextbet = previousbet*1.33
-             chance = 6 
-          end
-          if (losecount >= 10) then
-             nextbet = previousbet*1.33
-             chance = 20
-          end
-          if (losecount >= 12) then
-             nextbet = previousbet*1.33
-             chance = 8
-          end
-          if (losecount >= 16) then
-             nextbet = previousbet*1.55
-             chance = 28
-          end
-          if ( losecount >= 18) then
-            nextbet=previousbet*1.5
-            chance = 13
-          end
-          if ( losecount >= 19) then
-            nextbet=previousbet*1.51
-            chance = 14.3
-          end
-          if ( losecount >= 20) then
-            nextbet=previousbet*1.53
-            chance = 15.5
-          end
-          if ( losecount >= 21) then
-            nextbet=previousbet*1.56
-            chance = 16.2
-          end
-          if(i>k)then 
-          resetseed() 
-          print(" ") print("target: "..target) 
-          print("losecount: "..losecount)
-          print("chance: "..chance)
-          print("low: "..low)
-          print("high: "..high)
-          print("multiplier: "..multiplier)
-          print(" ")
-          end
-          if ( losecount >= 22) then
-            nextbet=previousbet*1.56
-            chance = 16.68
-          end
-          if ( losecount >= 23) then
-            nextbet=previousbet*1.56
-            chance = 17.18
-          end
-          if ( losecount >= 25) then
-            nextbet = previousbet*1.65
-           chance = 36
-          if win then
-          a = a + 1
-            nextbet = base
-            chance = 20
-            losecount = 0
-           else
-            nextbet = previousbet*1.33
-            losecount+=1
-          end
-          if (losecount >= 6) then
-             nextbet = previousbet*1.33
-             chance = 6 
-          end
-          if (losecount >= 10) then
-             nextbet = previousbet*1.33
-             chance = 20
-          end
-          if (losecount >= 12) then
-             nextbet = previousbet*1.33
-             chance = 8
-          end
-          if (losecount >= 16) then
-             nextbet = previousbet*1.55
-             chance = 28
-          end
-          if ( losecount >= 18) then
-            nextbet=previousbet*1.5
-            chance = 13
-          end
-          if ( losecount >= 19) then
-            nextbet=previousbet*1.51
-            chance = 14.3
-          end
-          if ( losecount >= 20) then
-            nextbet=previousbet*1.53
-            chance = 15.5
-          end
-          if ( losecount >= 21) then
-            nextbet=previousbet*1.56
-            chance = 16.2
-          end
-          if ( losecount >= 22) then
-            nextbet=previousbet*1.56
-            chance = 16.68
-          end
-          if ( losecount >= 23) then
-            nextbet=previousbet*1.56
-            chance = 17.18
-          end
-          if ( losecount >= 25) then
-            nextbet = previousbet*1.65
-           chance = 36
-          end
-          end
-          end</div>
-      </section>
+      if win then
+      a = a + 1
+        nextbet = base
+        chance = 20
+        losecount = 0
+       else
+        nextbet = previousbet*1.33
+        losecount+=1
+      end
+      if (losecount >= 6) then
+         nextbet = previousbet*1.33
+         chance = 6 
+      end
+      if (losecount >= 10) then
+         nextbet = previousbet*1.33
+         chance = 20
+      end
+      if (losecount >= 12) then
+         nextbet = previousbet*1.33
+         chance = 8
+      end
+      if (losecount >= 16) then
+         nextbet = previousbet*1.55
+         chance = 28
+      end
+      if ( losecount >= 18) then
+        nextbet=previousbet*1.5
+        chance = 13
+      end
+      if ( losecount >= 19) then
+        nextbet=previousbet*1.51
+        chance = 14.3
+      end
+      if ( losecount >= 20) then
+        nextbet=previousbet*1.53
+        chance = 15.5
+      end
+      if ( losecount >= 21) then
+        nextbet=previousbet*1.56
+        chance = 16.2
+      end
+      if(i>k)then 
+      resetseed() 
+      print(" ") print("target: "..target) 
+      print("losecount: "..losecount)
+      print("chance: "..chance)
+      print("low: "..low)
+      print("high: "..high)
+      print("multiplier: "..multiplier)
+      print(" ")
+      end
+      if ( losecount >= 22) then
+        nextbet=previousbet*1.56
+        chance = 16.68
+      end
+      if ( losecount >= 23) then
+        nextbet=previousbet*1.56
+        chance = 17.18
+      end
+      if ( losecount >= 25) then
+        nextbet = previousbet*1.65
+       chance = 36
+      if win then
+      a = a + 1
+        nextbet = base
+        chance = 20
+        losecount = 0
+       else
+        nextbet = previousbet*1.33
+        losecount+=1
+      end
+      if (losecount >= 6) then
+         nextbet = previousbet*1.33
+         chance = 6 
+      end
+      if (losecount >= 10) then
+         nextbet = previousbet*1.33
+         chance = 20
+      end
+      if (losecount >= 12) then
+         nextbet = previousbet*1.33
+         chance = 8
+      end
+      if (losecount >= 16) then
+         nextbet = previousbet*1.55
+         chance = 28
+      end
+      if ( losecount >= 18) then
+        nextbet=previousbet*1.5
+        chance = 13
+      end
+      if ( losecount >= 19) then
+        nextbet=previousbet*1.51
+        chance = 14.3
+      end
+      if ( losecount >= 20) then
+        nextbet=previousbet*1.53
+        chance = 15.5
+      end
+      if ( losecount >= 21) then
+        nextbet=previousbet*1.56
+        chance = 16.2
+      end
+      if ( losecount >= 22) then
+        nextbet=previousbet*1.56
+        chance = 16.68
+      end
+      if ( losecount >= 23) then
+        nextbet=previousbet*1.56
+        chance = 17.18
+      end
+      if ( losecount >= 25) then
+        nextbet = previousbet*1.65
+       chance = 36
+      end
+      end
+      end</div>
+  </section>
 
-      <section id="tab-2">
-        <h3>Graphic Design &amp; Illustration</h3>
-        <p>Keep up to date or learn a new skill with our graphic design and illustration content.</p>
-        <p>Ranging from Adobe Photoshop to drawing theory, from vector illustration to print design, we've got all experience levels covered.</p>
-        <div class="editor">chance    = 33
-          base      = 0.0000002
-          nextbet   = 0.0000002
-          losecount = 0
-          target    = balance + balance/10
-          a         = 0
-          i         = balance*0.99
-          k         = 100
-          roll      = 0
-          function dobet()
-          roll = roll + 1
-          if balance > target then stop() end
+  <section id="tab-2">
+    <h3>Graphic Design &amp; Illustration</h3>
+    <p>Keep up to date or learn a new skill with our graphic design and illustration content.</p>
+    <p>Ranging from Adobe Photoshop to drawing theory, from vector illustration to print design, we've got all experience levels covered.</p>
+    <div class="editor">chance    = 33
+      base      = 0.0000002
+      nextbet   = 0.0000002
+      losecount = 0
+      target    = balance + balance/10
+      a         = 0
+      i         = balance*0.99
+      k         = 100
+      roll      = 0
+      function dobet()
+      roll = roll + 1
+      if balance > target then stop() end
 
-          if a==16 then
-          bethigh=!bethigh
-          resetseed()
-          a=0
-          end
+      if a==16 then
+      bethigh=!bethigh
+      resetseed()
+      a=0
+      end
 
-          if win then
-          a = a + 1
-            nextbet = base
-            chance = 20
-            losecount = 0
-           else
-            nextbet = previousbet*1.33
-            losecount+=1
-          end
-          if (losecount >= 6) then
-             nextbet = previousbet*1.33
-             chance = 6 
-          end
-          if (losecount >= 10) then
-             nextbet = previousbet*1.33
-             chance = 20
-          end
-          if (losecount >= 12) then
-             nextbet = previousbet*1.33
-             chance = 8
-          end
-          if (losecount >= 16) then
-             nextbet = previousbet*1.55
-             chance = 28
-          end
-          if ( losecount >= 18) then
-            nextbet=previousbet*1.5
-            chance = 13
-          end
-          if ( losecount >= 19) then
-            nextbet=previousbet*1.51
-            chance = 14.3
-          end
-          if ( losecount >= 20) then
-            nextbet=previousbet*1.53
-            chance = 15.5
-          end
-          if ( losecount >= 21) then
-            nextbet=previousbet*1.56
-            chance = 16.2
-          end
-          if(i>k)then 
-          resetseed() 
-          print(" ") print("target: "..target) 
-          print("losecount: "..losecount)
-          print("chance: "..chance)
-          print("low: "..low)
-          print("high: "..high)
-          print("multiplier: "..multiplier)
-          print(" ")
-          end
-          if ( losecount >= 22) then
-            nextbet=previousbet*1.56
-            chance = 16.68
-          end
-          if ( losecount >= 23) then
-            nextbet=previousbet*1.56
-            chance = 17.18
-          end
-          if ( losecount >= 25) then
-            nextbet = previousbet*1.65
-           chance = 36
-          if win then
-          a = a + 1
-            nextbet = base
-            chance = 20
-            losecount = 0
-           else
-            nextbet = previousbet*1.33
-            losecount+=1
-          end
-          if (losecount >= 6) then
-             nextbet = previousbet*1.33
-             chance = 6 
-          end
-          if (losecount >= 10) then
-             nextbet = previousbet*1.33
-             chance = 20
-          end
-          if (losecount >= 12) then
-             nextbet = previousbet*1.33
-             chance = 8
-          end
-          if (losecount >= 16) then
-             nextbet = previousbet*1.55
-             chance = 28
-          end
-          if ( losecount >= 18) then
-            nextbet=previousbet*1.5
-            chance = 13
-          end
-          if ( losecount >= 19) then
-            nextbet=previousbet*1.51
-            chance = 14.3
-          end
-          if ( losecount >= 20) then
-            nextbet=previousbet*1.53
-            chance = 15.5
-          end
-          if ( losecount >= 21) then
-            nextbet=previousbet*1.56
-            chance = 16.2
-          end
-          if ( losecount >= 22) then
-            nextbet=previousbet*1.56
-            chance = 16.68
-          end
-          if ( losecount >= 23) then
-            nextbet=previousbet*1.56
-            chance = 17.18
-          end
-          if ( losecount >= 25) then
-            nextbet = previousbet*1.65
-           chance = 36
-          end
-          end
-          end</div>
-      </section>
+      if win then
+      a = a + 1
+        nextbet = base
+        chance = 20
+        losecount = 0
+       else
+        nextbet = previousbet*1.33
+        losecount+=1
+      end
+      if (losecount >= 6) then
+         nextbet = previousbet*1.33
+         chance = 6 
+      end
+      if (losecount >= 10) then
+         nextbet = previousbet*1.33
+         chance = 20
+      end
+      if (losecount >= 12) then
+         nextbet = previousbet*1.33
+         chance = 8
+      end
+      if (losecount >= 16) then
+         nextbet = previousbet*1.55
+         chance = 28
+      end
+      if ( losecount >= 18) then
+        nextbet=previousbet*1.5
+        chance = 13
+      end
+      if ( losecount >= 19) then
+        nextbet=previousbet*1.51
+        chance = 14.3
+      end
+      if ( losecount >= 20) then
+        nextbet=previousbet*1.53
+        chance = 15.5
+      end
+      if ( losecount >= 21) then
+        nextbet=previousbet*1.56
+        chance = 16.2
+      end
+      if(i>k)then 
+      resetseed() 
+      print(" ") print("target: "..target) 
+      print("losecount: "..losecount)
+      print("chance: "..chance)
+      print("low: "..low)
+      print("high: "..high)
+      print("multiplier: "..multiplier)
+      print(" ")
+      end
+      if ( losecount >= 22) then
+        nextbet=previousbet*1.56
+        chance = 16.68
+      end
+      if ( losecount >= 23) then
+        nextbet=previousbet*1.56
+        chance = 17.18
+      end
+      if ( losecount >= 25) then
+        nextbet = previousbet*1.65
+       chance = 36
+      if win then
+      a = a + 1
+        nextbet = base
+        chance = 20
+        losecount = 0
+       else
+        nextbet = previousbet*1.33
+        losecount+=1
+      end
+      if (losecount >= 6) then
+         nextbet = previousbet*1.33
+         chance = 6 
+      end
+      if (losecount >= 10) then
+         nextbet = previousbet*1.33
+         chance = 20
+      end
+      if (losecount >= 12) then
+         nextbet = previousbet*1.33
+         chance = 8
+      end
+      if (losecount >= 16) then
+         nextbet = previousbet*1.55
+         chance = 28
+      end
+      if ( losecount >= 18) then
+        nextbet=previousbet*1.5
+        chance = 13
+      end
+      if ( losecount >= 19) then
+        nextbet=previousbet*1.51
+        chance = 14.3
+      end
+      if ( losecount >= 20) then
+        nextbet=previousbet*1.53
+        chance = 15.5
+      end
+      if ( losecount >= 21) then
+        nextbet=previousbet*1.56
+        chance = 16.2
+      end
+      if ( losecount >= 22) then
+        nextbet=previousbet*1.56
+        chance = 16.68
+      end
+      if ( losecount >= 23) then
+        nextbet=previousbet*1.56
+        chance = 17.18
+      end
+      if ( losecount >= 25) then
+        nextbet = previousbet*1.65
+       chance = 36
+      end
+      end
+      end</div>
+  </section>
 
-      <section id="tab-3">
-        <h3>Web Design</h3>
-        <p>Free tutorials, learning guides, and online courses to help you learn web design.</p>
-        <p>Whether it’s interface design, UX, front-end development, motion design, accessibility, business, or something you’ve not yet discovered, our team of expert instructors have you covered!</p>
-      </section>
+  <section id="tab-3">
+    <h3>Web Design</h3>
+    <p>Free tutorials, learning guides, and online courses to help you learn web design.</p>
+    <p>Whether it’s interface design, UX, front-end development, motion design, accessibility, business, or something you’ve not yet discovered, our team of expert instructors have you covered!</p>
+  </section>
 
-      <section id="tab-4">
-        <h3>Business</h3>
-        <p>Do you need to learn a new business skill quickly? Discover how to start a profitable business, use the latest business software, and level up your career—with thousands of free business tutorials taught by expert instructors.</p>
-      </section>
+  <section id="tab-4">
+    <h3>Business</h3>
+    <p>Do you need to learn a new business skill quickly? Discover how to start a profitable business, use the latest business software, and level up your career—with thousands of free business tutorials taught by expert instructors.</p>
+  </section>
 
-      <section id="tab-5">
-        <h3>Photography &amp; Video</h3>
-        <p>Free tutorials, learning guides, and online courses to help you learn photo and video skills.</p>
-        <p>Whether it’s digital imaging, editing and post-production, visual storytelling, business, or something you’ve not yet discovered, our team of expert instructors have you covered!</p>
-      </section>
-    </div>
-    <script>
-      var editor;
-
-      // Click Tab
-      const tabLinks = $('#tab-links li a');
-      tabLinks.click(function(event) 
-      {
-        var $this = $(this);
-        event.preventDefault();
-        $('#tab-links a.active, section.active').removeClass('active');
-        $this.addClass('active');
-        $($this.attr('href')).addClass('active');
-      });
-
-      $('.editor').each(function( index ) 
-      {
-        editor = ace.edit(this);
-        editor.session.setMode("ace/mode/lua");
-        editor.setTheme("ace/theme/dracula");
-        editor.renderer.setShowGutter(true);
-        editor.getSession().setUseWrapMode(true)
-        editor.setOptions({
-          useWorker: false,
-          readOnly: true,
-        });
-
-        beautifyLua();
-      });
-
-      // Beautify Lua
-      function beautifyLua(_0x143e5d) 
-      {
-          var _0x568112 = _0x4d06e1, _0x5ab4eb = editor.getValue();
-          if (_0x5ab4eb === null || _0x5ab4eb[_0x568112('0xef')]()[_0x568112('0x98')] === 0x0) return;
-          var _0x15cbd7 = '\x20\x20', _0x549cf4 = 0x2;
-          document[_0x568112('0x8a')]('indent') != null && (_0x549cf4 = document[_0x568112('0x8a')](_0x568112('0x60'))[_0x568112('0xd9')]);
-          for (var _0x27f385 = 0x2; _0x27f385 <= _0x549cf4; _0x27f385++) 
-          {
-              _0x15cbd7 = _0x15cbd7 + '\x20';
-          }
-          var _0x3d19ce = luaBeautifier(_0x5ab4eb, _0x15cbd7);
-          editor.setValue(_0x3d19ce);
-      }
-
-      // Copy
-      function ApplyToMyCode() 
-      {
-        textarea.val(editor.getSession().getValue());
-        console.log("da click ham Copy()");
-      }
-    </script>
- <!--  </body>
-</html>  -->
+  <section id="tab-5">
+    <h3>Photography &amp; Video</h3>
+    <p>Free tutorials, learning guides, and online courses to help you learn photo and video skills.</p>
+    <p>Whether it’s digital imaging, editing and post-production, visual storytelling, business, or something you’ve not yet discovered, our team of expert instructors have you covered!</p>
+  </section>
+</div>
