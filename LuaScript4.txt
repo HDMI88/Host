@@ -4,7 +4,7 @@
 -- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
 -- Similar to other coins.
 
--- SCRIPT 04. UPDATED: 22/02/2021 --
+-- SCRIPT 04
 
 chance       = 50                    
 base         = balance * 0.00000010 
