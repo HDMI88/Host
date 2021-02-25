@@ -1,3 +1,9 @@
+---> A. All Lua scripts are shared by users so please test them carefully before using.
+---> B. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+        -- 1. You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+        -- 2. You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+        -- 3. Similar to other coins.
+
 -- SCRIPT 03. UPDATED: 22/02/2021 --
 
 chance       = 50                    
