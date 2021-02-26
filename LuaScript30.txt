@@ -1,0 +1,95 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 30
+
+chance=50
+bet=0
+bh=0
+n=1
+q=4
+bethigh=false
+s=chance/(99-chance)
+maxbalance=balance*1.0001
+debt=maxbalance-balance
+min=balance/maxbalance
+Min=1
+volume=0
+progress=(bet/(9000*24))
+nextbet=(debt/q)*s
+
+function dobet()
+   bet+=1
+   progress=bet/(9000*24)
+   s=chance/(99-chance)
+   print("Days(2.5bets/sec):"..progress)
+   volume=volume+previousbet
+   print("Volume:"..volume)
+   min=balance/maxbalance
+   if min<Min then
+      Min=min
+   end
+
+
+   if win then
+      q = q-1
+   else
+      q = q+1
+   end
+
+
+   if lastBet.roll>50 then
+      bh= bh + 1
+   elseif lastBet.roll<50 then
+      bh= bh - 1
+   else
+      bh=bh
+   end
+
+   if bh<0 then
+      bethigh=true
+   else
+      bethigh=false
+   end
+
+   if balance>maxbalance then
+      maxbalance=balance*1.0001
+      q=0
+      n=1
+   end
+
+
+
+   if q==0 then
+
+      q=4
+      n=n - 1
+      if n<1 then
+         n=1
+      end
+      maxbalance=maxbalance*1.00001
+      debt=maxbalance-balance
+      nextbet=((debt/n)/q)*s
+
+   elseif q==12 then
+
+      q=4
+      n=n+1
+      maxbalance=maxbalance*1.000001
+      debt=maxbalance-balance
+      nextbet=((debt/n)/q)*s
+
+   else
+
+      debt=maxbalance-balance
+      nextbet=((debt/n)/q)*s
+
+   end
+
+   print("Balance:"..balance)
+   print("Maxbalance:"..maxbalance)
+   print("Min%:"..Min*100)
+end
