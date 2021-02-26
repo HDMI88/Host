@@ -1,0 +1,98 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 40
+
+enablezz = false
+enablesrc = false
+bethigh = false
+minibet = 0.00000001
+basebet = minibet
+basebetopti = basebet
+chance = 33
+wintarget = 0 
+stoploss  = 0
+numbet = 0
+nextbet = minibet
+safe = 0.00001
+
+-- FIBONACCI
+a = 0
+b = 1
+c = 0
+suite = {1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169}
+indice = 1
+
+-- STRATEGY
+function dobet()
+
+   function calculbet()
+      probabust = 0
+      basebet = minibet
+
+      while probabust < safe do
+         basebet = basebet + minibet
+         loses = 0
+         a = 0
+         b = 1
+         c = 0
+
+         while basebet*c < balance do
+            loses = loses + 1
+            c = a + b
+            if loses == 2 then
+               c = 1
+            end
+            a = b
+            b = c
+         end
+         
+         loses = loses - 1
+         probabust = (1-chance/100)^loses
+      end
+
+      basebet = math.floor(100000000*basebet)/100000000
+
+      if basebet <= minibet then
+         basebet = minibet
+      end
+
+      print("\nBest Basebet : "..basebet.."\nBust Probability : "..probabust.."%\nNumber of losses max : "..loses.."\n")
+      basebetopti = basebet
+
+   end
+
+   numbet = numbet + 1
+
+   -- Reset seed every 1.000 rolls
+   if numbet % 1000 == 0 then
+      print("\n\n______________________\n")
+      resetseed()
+      print("\n______________________\n\n")
+   end
+
+   -- Check balance
+   if balance >= wintarget and wintarget ~= 0 then
+      print("\n\nWinTarget Reach\n\n")
+      stop()
+   end
+   if balance <= stoploss and stoploss ~= 0 then
+      print("\n\nStoploss Reach\n\n")
+      stop()
+   end
+
+   if win then
+      -- Recalculer le basebet
+      calculbet()
+      indice = 1
+
+   else
+      basebet = basebetopti*suite[indice]
+      indice = indice + 1
+   end
+
+   nextbet = basebet
+end
