@@ -1,0 +1,467 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 20
+
+chance     = 90
+divider    = 10000 -- Change Higher for safety
+bethigh    = false
+multyplier = 3.36495
+basebet    = (balance / divider)
+nextbet    = basebet
+
+profittarget = balance * 1.1
+
+function dobet()
+
+   if (balance) >= profittarget then
+      stop();
+      print(balance)
+      print("TARGET ACHIEVED!!!")
+   end
+   if bets < 0.01 then
+      divider = 10000
+   else
+      if bets < 0.1 then
+         divider = 50000
+      else
+         if bets < 1 then
+            divider = 100000
+
+         end
+      end
+   end
+   basebet =balance / divider
+   maxbet=basebet *1.5
+   minbet=basebet
+   nextbet = math.random(minbet*100000000,maxbet*100000000)/100000000
+   if win then
+      if lastBet.Chance > 80 then
+         if currentstreak==10 then
+            if lastBet.Roll < 10 then
+               chance = 90
+            end
+            if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+               chance = 69
+            end
+            if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+               chance = 48
+            end
+            if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+               chance = 69
+            end
+            if lastBet.Roll > 89.99 then
+               chance = 90
+            end
+         end
+      end
+      if lastBet.Chance < 70 and lastBet.Chance > 60  then
+         if previousbet > (balance / divider) then
+            chance = 90
+         end
+      end
+      if lastBet.Chance < 60 and lastBet.Chance > 40  then
+         if previousbet > (balance / divider) then
+            chance = 90
+         end
+      end
+   end
+
+   if chance > 80 then
+      if win then
+         chance     = 90
+         multyplier = 3.36495
+
+         nextbet    = (balance / divider)
+         if currentstreak==10 then
+            if lastBet.Roll < 10 then
+               chance = 90
+            end
+            if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+               chance = 69
+            end
+            if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+               chance = 49.5
+            end
+            if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+               chance = 69
+            end
+            if lastBet.Roll > 89.99 then
+               chance = 90
+            end
+         end
+      else
+         chance  = 69
+         nextbet = previousbet * 3.5
+         if currentstreak==-1 then
+            nextbet = previousbet * 2.4
+            if lastBet.Roll < 3 then
+               bethigh = false
+            end
+            if lastBet.Roll > 97 then
+               bethigh = true
+            end
+         end
+      end
+   end
+   if chance < 70 and chance > 60  then
+      if win then
+         chance     = 69
+         multyplier = 3.36495
+
+         nextbet    = (balance / divider)
+         if previousbet > (balance / divider) then
+            chance = 90
+         end
+      else
+         chance  = 69
+         nextbet = previousbet * 3.5
+         if currentstreak==-1 then
+            nextbet = previousbet * 2.4
+            if lastBet.Roll < 3 then
+               bethigh = false
+            end
+            if lastBet.Roll > 97 then
+               bethigh = true
+            end
+         end
+      end
+   end
+   if chance < 60 and chance > 40  then
+      if win then
+         chance     = 49.5
+         multyplier = 2.5
+
+         nextbet    = (balance / divider)
+         if previousbet > (balance / divider) then
+            chance = 90
+         end
+      else
+         chance  = 49.5
+         nextbet = previousbet * 2
+         if currentstreak==-1 then
+            nextbet          = previousbet
+            if lastBet.Roll < 3 then
+               bethigh = false
+            end
+            if lastBet.Roll > 97 then
+               bethigh = true
+            end
+            resetseed();
+         end
+         if currentstreak==-2 then
+            nextbet = previousbet * 4
+         end
+         if currentstreak==-3 then
+            nextbet = previousbet * 2.5
+         end
+
+      end
+   end
+
+   if win then
+      if currentstreak==2 then
+         bethigh = !bethigh
+      end
+      if currentstreak==4 then
+         bethigh = !bethigh
+      end
+      if currentstreak==6 then
+         bethigh = !bethigh
+      end
+      if currentstreak==8 then
+         bethigh = !bethigh
+      end
+      if currentstreak==10 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==12 then
+         bethigh = !bethigh
+      end
+      if currentstreak==14 then
+         bethigh = !bethigh
+      end
+      if currentstreak==16 then
+         bethigh = !bethigh
+      end
+      if currentstreak==18 then
+         bethigh = !bethigh
+      end
+      if currentstreak==20 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==22 then
+         bethigh = !bethigh
+      end
+      if currentstreak==24 then
+         bethigh = !bethigh
+      end
+      if currentstreak==26 then
+         bethigh = !bethigh
+      end
+      if currentstreak==28 then
+         bethigh = !bethigh
+      end
+      if currentstreak==30 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==32 then
+         bethigh = !bethigh
+      end
+      if currentstreak==34 then
+         bethigh = !bethigh
+      end
+      if currentstreak==36 then
+         bethigh = !bethigh
+      end
+      if currentstreak==38 then
+         bethigh = !bethigh
+      end
+      if currentstreak==40 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==42 then
+         bethigh = !bethigh
+      end
+      if currentstreak==44 then
+         bethigh = !bethigh
+      end
+      if currentstreak==46 then
+         bethigh = !bethigh
+      end
+      if currentstreak==48 then
+         bethigh = !bethigh
+      end
+      if currentstreak==50 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==52 then
+         bethigh = !bethigh
+      end
+      if currentstreak==54 then
+         bethigh = !bethigh
+      end
+      if currentstreak==56 then
+         bethigh = !bethigh
+      end
+      if currentstreak==58 then
+         bethigh = !bethigh
+      end
+      if currentstreak==60 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==62 then
+         bethigh = !bethigh
+      end
+      if currentstreak==64 then
+         bethigh = !bethigh
+      end
+      if currentstreak==66 then
+         bethigh = !bethigh
+      end
+      if currentstreak==68 then
+         bethigh = !bethigh
+      end
+      if currentstreak==70 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==72 then
+         bethigh = !bethigh
+      end
+      if currentstreak==74 then
+         bethigh = !bethigh
+      end
+      if currentstreak==76 then
+         bethigh = !bethigh
+      end
+      if currentstreak==78 then
+         bethigh = !bethigh
+      end
+      if currentstreak==80 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 48
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==82 then
+         bethigh = !bethigh
+      end
+      if currentstreak==84 then
+         bethigh = !bethigh
+      end
+      if currentstreak==86 then
+         bethigh = !bethigh
+      end
+      if currentstreak==88 then
+         bethigh = !bethigh
+      end
+      if currentstreak==90 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+      if currentstreak==92 then
+         bethigh = !bethigh
+      end
+      if currentstreak==94 then
+         bethigh = !bethigh
+      end
+      if currentstreak==96 then
+         bethigh = !bethigh
+      end
+      if currentstreak==98 then
+         bethigh = !bethigh
+      end
+      if currentstreak==100 then
+         bethigh = !bethigh
+         if lastBet.Roll < 10 then
+            chance = 90
+         end
+         if lastBet.Roll < 36.66 and lastBet.Roll > 9.99 then
+            chance = 69
+         end
+         if lastBet.Roll < 63.34 and lastBet.Roll > 36.65 then
+            chance = 49.5
+         end
+         if lastBet.Roll < 90 and lastBet.Roll > 63.33 then
+            chance = 69
+         end
+         if lastBet.Roll > 89.99 then
+            chance = 90
+         end
+      end
+   end
+end
