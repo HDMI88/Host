@@ -1,0 +1,53 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 61
+
+chance    = 5
+bethigh   = false
+basebet   = 0.00000010
+nextbet   = basebet
+brandy    = 2
+candy     = 0
+lolly     = 1.2
+breezy    = 1
+frozy     = 0
+goalie    = basebet * 1
+potty     = 0
+chanceInc = 3
+balmax    = balance * 1.001
+
+function dobet()
+   if balance <= potty then
+      stop()
+   end
+   if (win) then
+      chance    = 5
+      bethigh = !bethigh
+      candy+=lastBet.profit
+      if balance > frozy+goalie then
+         frozy = balance
+      else
+         nextbet = previousbet * lolly
+      end
+
+   else
+      chance  = chance+chanceInc
+      candy+=lastBet.profit
+      brandy+=1
+      nextbet = previousbet * breezy
+      if brandy > 2 then
+         bethigh = false
+         brandy = 2
+      end
+   end
+   if balance>=balmax then
+      balmax  = balance * 1.001
+      nextbet = basebet
+      chance  = chance+chanceInc
+      print("balmax"..balmax)
+   end
+end
