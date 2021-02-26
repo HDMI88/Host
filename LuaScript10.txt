@@ -1,0 +1,157 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 10
+
+chance     = 50
+multiplier = 2.1
+rate_no    = 0.00004710 
+base       = (balance * rate_no) / 100
+bethigh    = true
+count_no   = 0
+nextbet    = base
+set_no     = math.random(1,3)
+target     = balance * 1.05
+diff       = target - balance
+pre_set_no = 0
+count_win  = 0
+
+function dobet()
+    if balance >= target then
+      stop()
+    else 
+       diff = target - balance
+    end
+    
+    if pre_set_no == set_no then
+       if set_no == 3 then
+          set_no = set_no - math.random(1,2)
+       else 
+           if set_no == 1 then
+              set_no = set_no + math.random(1,2)
+           else
+              if set_no == 2 then
+                 if math.random(1,2) == 1 then
+                    set_no = set_no + 1
+                 else
+                    set_no = set_no - 1
+                 end
+              end
+           end
+       end
+    end
+    
+    count_no = count_no + 1
+    if count_no == 1 then
+      if set_no == 1 then 
+         bethigh    = true
+      end
+      if set_no == 2 then 
+         bethigh    = false
+      end
+      if set_no == 3 then 
+         bethigh    = true
+      end
+   else
+      if count_no == 2 then
+         if set_no == 1 then 
+            bethigh    = false
+         end
+         if set_no == 2 then 
+            bethigh    = true
+         end
+         if set_no == 3 then 
+            bethigh    = false
+         end
+      else
+         if count_no == 3 then
+            if set_no == 1 then 
+               bethigh    = true
+            end
+            if set_no == 2 then 
+               bethigh    = true
+            end
+            if set_no == 3 then 
+               bethigh    = true
+            end
+         else
+            if count_no == 4 then
+               if set_no == 1 then 
+                  bethigh    = true
+               end
+               if set_no == 2 then 
+                  bethigh    = false
+               end
+               if set_no == 3 then 
+                  bethigh    = false
+               end
+            else
+               if count_no == 5 then
+                  if set_no == 1 then 
+                     bethigh    = false
+                  end
+                  if set_no == 2 then 
+                     bethigh    = false
+                  end
+                  if set_no == 3 then 
+                     bethigh    = true
+                  end
+               else
+                  if count_no == 6 then
+                     if set_no == 1 then 
+                        bethigh    = false
+                     end
+                     if set_no == 2 then 
+                        bethigh    = true
+                     end
+                     if set_no == 3 then 
+                        bethigh    = false
+                     end
+                     
+                     count_no   = 0
+                     set_no     = math.random(1,3)
+                     pre_set_no = set_no
+                     
+                     
+                     resetseed()
+                  end
+               end
+            end
+         end
+      end
+   end
+
+
+   if win then
+      nextbet   = (balance * rate_no) / 100
+      count_win = count_win + 1
+   else
+      nextbet   = previousbet*multiplier
+      count_win = count_win - 1
+   end
+
+  print("Count "..count_no)
+  print("Set No "..set_no)
+  print("Base Bet "..base)
+  print("Target "..target)
+  print("Diff "..diff)
+  print("Count Win "..count_win)
+
+  if count_win >= 10000 then
+     --withdraw(0.001,'your address here')
+     count_win = 0
+  end
+  
+   if set_no == 1 then
+      print("HSHHSS")
+   else
+      if set_no == 2 then
+         print("SHHSSH")
+      else 
+         print("HSHSHS")
+      end
+   end
+end
