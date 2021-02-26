@@ -1,0 +1,84 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 101
+
+chance   = 49.5
+bethigh  = false
+basebet  = balance * 0.00000010
+sitemin  = 0.00000001
+nextbet  = basebet
+enablezz = false
+a        = 0
+payout   = 0
+multi    = 0
+nextbet  = basebet
+target   = balance*1.1
+
+function dobet()
+    nextbet = a/(99/chance)
+
+    if lastBet.Roll < 10 then
+      chance = math.random(20,170)/10
+    end
+    if lastBet.Roll > 90 then
+      chance = math.random(20,170)/10
+    end
+    if lastBet.Roll > 10 and lastBet.Roll < 20 then
+      chance = math.random(270,350)/10
+    end
+
+    if lastBet.Roll < 90 and lastBet.Roll > 80 then
+      chance = math.random(270,350)/10
+    end
+
+    if lastBet.Roll > 40 and lastBet.Roll < 60 then
+      chance = math.random(750,850)/10
+    end
+    if lastBet.Roll > 45 and lastBet.Roll < 55 then
+      chance = math.random(850,900)/10
+    end
+
+    if lastBet.Roll > 30 and lastBet.Roll < 40 then
+      chance = math.random(400,500)/10
+    end
+    if lastBet.Roll > 60 and lastBet.Roll < 70 then
+      chance = math.random(400,500)/10
+    end
+
+    if win then 
+        a=0 
+        nextbet=basebet 
+    else
+       a = a-currentprofit
+    end
+
+    payout  = (100-1)/chance
+    multi   = payout/(payout-1)
+    nextbet = a/(payout/multi)
+
+    print("payout: "..payout)
+    print("multi: "..multi)
+
+    if nextbet<basebet then
+       nextbet=basebet
+    end
+
+    if nextbet<sitemin then
+       nextbet=sitemin
+    end
+
+    if bets%4==0 then
+       bethigh=!bethigh
+    end
+    nextbet = math.floor(nextbet*10^8)/10^8
+
+    if balance>=target then
+       stop()
+       print("Target reached!")
+       ching()
+    end
+end
