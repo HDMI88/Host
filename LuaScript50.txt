@@ -1,0 +1,143 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 50
+
+chance      = 49.5
+revchance   = 50.5
+jackpot     = 99.89
+revjackpot  = 0.1
+multup      = 2.05
+multjackpot = 1.0014
+base        = balance*1.1/(multup^20-1)
+basejackpot = base
+initial     = 3
+threshold   = 2000
+
+bethigh         = true
+currentstreak   = 0
+counter         = 1
+reversecounter  = 0
+countjackpot    = 1
+revcountjackpot = 0
+nextbet         = base
+main            = 1
+
+function dobet()
+
+   if bethigh==true then
+      if lastBet.roll>revchance then
+         counter=0
+      else
+         counter=counter+1
+      end
+
+      if lastBet.roll<chance then
+         reversecounter=0
+      else
+         reversecounter=reversecounter+1
+      end
+
+   else
+
+      if lastBet.roll<chance then
+         counter=0
+      else
+         counter=counter+1
+      end
+
+      if lastBet.roll>revchance then
+         reversecounter=0
+      else
+         reversecounter=reversecounter+1
+      end
+   end
+
+   if lastBet.roll>=revjackpot then
+      revcountjackpot=revcountjackpot+1
+   else
+      revcountjackpot=0
+   end
+
+   if lastBet.roll<=jackpot then
+      countjackpot=countjackpot+1
+   else
+      countjackpot=0
+   end
+
+   if main==1 then
+
+
+      if win then
+         if reversecounter<initial then
+            counter=0
+            nextbet=base
+         else
+            bethigh =! bethigh
+            counter=reversecounter
+            reversecounter=0
+            if counter>=initial then
+               nextbet=base*(multup^counter)
+            else
+               nextbet=base
+            end
+         end
+
+         if countjackpot>threshold then
+            bethigh=true
+            chance=revjackpot
+            nextbet=basejackpot
+            main=2
+         end
+
+         if revcountjackpot>threshold then
+            bethigh=false
+            chance=revjackpot
+            nextbet=basejackpot
+            main=2
+         end
+
+      else
+         if counter>=initial then
+            nextbet=base*(multup^counter)
+         else
+            nextbet=base
+         end
+      end
+
+   else
+
+      if win then
+         ching()
+         main=1
+         nextbet=base
+         chance=49.5
+         bethigh=true
+      else
+         nextbet=previousbet*multjackpot
+      end
+
+      if profit<0 then
+         ching()
+         main=1
+         nextbet=base
+         chance=49.5
+         bethigh=true
+         countjackpot=0
+         revcountjackpot=0
+      end
+
+   end
+
+   print("streak " ..counter)
+   print("reverse streak " ..reversecounter)
+   print("jackpot " ..countjackpot .." " ..revcountjackpot)
+
+   if profit>0.150000 then stop()
+end
+
+
+end
