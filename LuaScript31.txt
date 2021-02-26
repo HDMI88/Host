@@ -1,0 +1,51 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 31
+
+chance      = 16.5
+multiplier  = 1.15
+multiplier2 = 0.50
+i           = 1
+
+basebet      = balance/10000000
+targetprofit = balance*0.1
+target       = balance+targetprofit
+stoptarget   = balance
+nextbet      = basebet
+bethigh      = true
+counter      = 0
+
+function dobet()
+   counter+=1
+   print(" ")
+   print("Profit :"..string.format("%.8f",profit))
+
+   if counter == 25 then
+      print(" ")
+      print("Profit :"..string.format("%.8f",profit))
+      print(" ")
+      counter=0
+   end
+
+   if balance>target then
+      stop()
+      print(" ")
+      print(" Balance : "..string.format("%.8f",balance))
+   end
+
+   if win then
+      nextbet = previousbet/2
+      if nextbet < basebet then
+         nextbet=basebet
+      end
+   end
+
+   if !win then
+      nextbet = previousbet*1.15
+   end
+
+end
