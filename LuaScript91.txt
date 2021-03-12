@@ -1,0 +1,51 @@
+---> 1. All Lua scripts are shared by users so please test them carefully before using.
+---> 2. Tips: Test with 0.1 DOGE or 1 DOGE for about 1 day to find the settings, the strategy that works best for you. For example:
+-- You have 0.1 LTC, test with 0.1 Doge about 1 day to find the most effective strategy, least risk. Then apply that setting, that strategy to 0.1 LTC.
+-- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
+-- Similar to other coins.
+
+-- SCRIPT 91
+
+bet     = 0.00000001
+prebet  = 2
+chance  = 49.5
+x       = 1000000000
+level   = 1
+p       = 0
+nextbet = bet
+bethight = true
+
+function fibo(level)
+   if (level > prebet) then
+      return fibo(level-1) +fibo (level-2)
+   else
+      return 1
+   end
+end
+
+function dobet()
+
+   print("\n Level : "..level)
+   print(string.format(" Highest Profit : %.8f",p).. "\n")
+
+   if (level == x) then
+      nextbet = bet
+   end
+
+   if (profit >= p) then
+      p = profit end
+
+      if (win) then
+         if (profit >= p) then
+            p       = profit
+            nextbet = bet
+            level   = 1
+         else
+            level   -= 1
+            nextbet = bet*fibo(level)
+         end
+      else
+         level += 1
+         nextbet = bet*fibo(level)
+      end
+   end
