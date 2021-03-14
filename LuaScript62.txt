@@ -6,138 +6,132 @@
 
 -- SCRIPT 62
 
-basebet    = balance * 0.00000100
-nextbet    = basebet
-multiplier = 2
-chance     = 49.95
-change     = 0
+losscoinstop = balance / 5
+profitcoinstop = balance / 2 
+basebet = losscoinstop / 6000
+smbet = basebet / 5
+nextbet = smbet 
+enablezz = false
+enablesrc = false
+bethigh = false
+ath = balance
+chance = 65
+scripthistory = {}
+mychances = {25, 50, 75, 100}
+payoutpercents = {}
+myconf = 3
+playfree = false
+strategyfound = false
+remainingbets = 5
+iwins = {}
 
 function dobet()
-   if win then
-      nextbet = basebet
-      change  = 0
-      x       = math.random (1,2)
-      if x >= 2 then
-         bethigh=true
-      else
-         bethigh=false
-      end
-   else
-      nextbet = (previousbet*multiplier)+basebet
-      change  = 0
-   end
+    if #scripthistory == 0 then
+        print("First Roll Initializing Values")
+        initializescript()
+    end
+    if lastBet then
+        table.insert(scripthistory, lastBet.Roll)
+    end
+    if not win then
+        table.insert(iwins, 1, false)
+    else
+        table.insert(iwins, 1, true)
+    end
+    if #scripthistory < 15 and wins then
+        bethigh = !bethigh
+        nextbet = basebet / 10
+        remainingbets = 5
+        return
+    end
+    if win then
+        remainingbets = 3
+    else
+        remainingbets = remainingbets - 1
+    end
+    if remainingbets <= 0 then
+        myconf = myconf + 1
+        remaininbets = 5
+        if myconf > 2 then
+            myconf = 1
+        end
+        print(myconf)
+    end
 
-   if (currentstreak == -1 and bethigh == false and change==0) then
-      bethigh = false change = 1
-   end
+    bethigh = highlowrec()
+    if win then
+        if balance > ath then
+            nextbet = (basebet * 2)
+            ath = balance
+        else
+            nextbet = (ath - balance) / 2
+        end
+        if nextbet < (basebet * 2) then
+            nextbet = basebet * 2
+        end
+        chance = 55
+    else
+        if bets > 500 then
+            if currentstreak < -5 then
+                initializescript()
+            end
+        end
+    end
+    if not win then
+        nextbet = previousbet / 2
+    end
+    if nextbet < basebet then
+        nextbet = basebet
+    end
+    if currentstreak < -1 then
+        nextbet = previousbet * 0.75
+        chance = 65
+    end
+    if nextbet < smbet then
+        nextbet = smbet
+    end
 
-   if (currentstreak == -1 and bethigh == true and change==0) then
-      bethigh = true
-      change = 1
-   end
+    if ((ath - balance) + nextbet) > losscoinstop then
+        print("Stopping due to Lost Coins Stopper")
+        stop()
+    end
+end
 
-   if (currentstreak == -2 and bethigh == false and change==0) then
-      bethigh = true
-      change = 1
-   end
+function initializescript()
+    resetstats()
+    if lastBet.Nonce > 500 then
+        resetseed()
+        resetstats()
+    end
+end
 
-   if (currentstreak == -2 and bethigh == true and change==0) then
-      bethigh = false
-      change = 1
-   end
+function quadrec()
+    pattern1 = {}
+    myval = 1
+    for i = #scripthistory, #scripthistory - 5, -1 do
+        if scripthistory[i] < 25 then
+            myval = 1
+        elseif scripthistory[i] < 51 then
+            myval = 2
+        elseif scripthistory[i] < 76 then
+            myval = 3
+        else
+            myval = 4
+        end
+        table.insert(pattern1, myval)
+    end
+end
 
-   if (currentstreak == -3 and bethigh == false and change==0) then
-      bethigh = false
-      change = 1
-   end
-
-   if (currentstreak == -3 and bethigh == true and change==0) then
-      bethigh = true
-      change = 1
-   end
-
-   if currentstreak <= -4 then
-      x = math.random (1,2)
-      if x >= 2 then
-         bethigh=true
-      else
-         bethigh=false
-      end
-   end
-
-   if (currentstreak == -5 and bethigh == false and change==0) then
-      bethigh = true
-      change = 1
-   end
-
-   if (currentstreak == -5 and bethigh == true and change==0) then
-      bethigh = false
-      change = 1 
-   end
-
-   if (currentstreak == -6 and bethigh == false and change==0) then
-      bethigh = true
-      change = 1
-   end
-
-   if (currentstreak == -6 and bethigh == true and change==0) then
-      bethigh = false
-      change = 1
-   end
-
-   if (currentstreak == -7 and bethigh == false and change==0) then
-      bethigh = false
-      change = 1
-   end
-
-   if (currentstreak == -7 and bethigh == true and change==0) then
-      bethigh = true
-      change = 1
-   end
-
-   if currentstreak == -8 then
-      x = math.random (1,2)
-      if x >= 2 then
-         bethigh=true
-      else
-         bethigh=false
-      end
-   end
-
-   if currentstreak == -9 then
-      x = math.random (1,2)
-      if x >= 2 then
-         bethigh=false
-      else
-         bethigh=true
-      end
-   end
-
-   if (currentstreak == -10 and bethigh == false and change==0) then
-      bethigh = true
-      change = 1
-   end
-
-   if (currentstreak == -10 and bethigh == true and change==0) then
-      bethigh = false
-      change = 1
-   end
-
-   if currentstreak == -11 then
-      x = math.random (1,2)
-      if x >= 2 then
-         bethigh=true
-      else
-         bethigh=false
-      end
-   end
-
-   if currentstreak <= -12 then
-      x = math.random (1,2)
-      if x >= 2 then
-         bethigh=false
-      else
-         bethigh=true
-      end
-   end
+function highlowrec()
+    pattern2 = {}
+    myval = false
+    for i = #scripthistory, #scripthistory - 5, -1 do
+        if scripthistory[i] < 50.99 then
+            myval = false
+        else
+            myval = true
+        end
+        table.insert(pattern2, myval)
+    end
+    return pattern2[myconf]
 end
