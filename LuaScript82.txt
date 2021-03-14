@@ -4,97 +4,191 @@
 -- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
 -- Similar to other coins.
 
--- SCRIPT 04
+-- SCRIPT 82
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+-- ### Settings ###
+minimum_bet = 0.00000010
 
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+-- Start Bet
+start_bet_first  = 0.00000010
+start_bet_second = 0.00000500
+
+-- Multiplier
+multiplier_first  = 1.15
+multiplier_second = 1.20
+
+-- Lower Limit
+lower_limit_first  = 0.00001500
+lower_limit_second = 0.00100000
+
+-- Wait Count
+wait_count_first  = 0
+wait_count_second = 15
+
+-- Target
+target_profit  = 0.00100000
+target_balance = balance + target_profit
+
+-- Stop if balance is below (0: diabled)
+stop_balance = 0
+
+
+-- ### Initialization ###
+base_bet   = start_bet_first 
+multiplier = multiplier_first
+chance     = 10
+bethigh    = true
+
+lower_limit_base = lower_limit_first 
+lower_limit      = lower_limit_base
+
+wait_count_base = wait_count_first
+wait_count      = wait_count_base
+
+betcount     = 0
+totalwin     = 0  
+wincount     = 0
+losecount    = 0
+maxlosecount = 0
+minlosecount = 9999
+sumlosecount = 0
+
+is_stop_increase = false
+
+increase_start_balance = 0
+saved_balance          = 0
+
+start_balance = balance
+nextbet       = minimum_bet
+
+
+function set_lower_limit()
+    print("[set_lower_limit]")
+    lower_limit = balance - lower_limit_base
+    print(" Lower Limit: " .. lower_limit)
+end
+set_lower_limit()
+
 
 function dobet()
+    resetseed()
+    betcount = betcount + 1
+    print("======== [" .. betcount .. "]")
+    msg_balance = "Balance : " .. string.format("%.8f", balance)
+    msg_goal    = " ( Target : " .. string.format("%.8f", target_balance) .. " )"
+    msg_start   = " ( Start : " .. string.format("%.8f", start_balance) .. " )"
+    print(msg_balance .. msg_start .. msg_goal)
+    print("Profit : " .. string.format("%.8f", balance - start_balance))
+    print("Lower Limit : " .. string.format("%.8f", lower_limit))
+    
+    print("----")
+    print("Multiplier : " .. multiplier)
+    print("Wait Count : " .. wait_count)
+    if (is_stop_increase) then 
+        print("# is_stop_increase : true") 
+    end
+    
+    -- WIN
+    if (win) then
+        print("WIN")
+        totalwin = totalwin + 1
+        wincount = wincount + 1
+        
+        -- Save Balance
+        increase_start_balance = balance
+        if (saved_balance < balance) then
+            -- Reset
+            saved_balance    = 0
+            wait_count_base  = wait_count_first
+            wait_count       = wait_count_base
+            lower_limit_base = lower_limit_first
+            base_bet         = start_bet_first 
+            multiplier       = multiplier_first
+        else
+            -- Set Wait Count
+            wait_count = wait_count_base
+        end
+        
+        -- Lose Count
+        if (maxlosecount < losecount) then maxlosecount = losecount end
+        if (losecount < minlosecount) then minlosecount = losecount end
+        sumlosecount = sumlosecount + losecount
+        losecount = 0
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
+        -- Next Bet
+        set_lower_limit()
+        nextbet = minimum_bet
+        
+        -- Reset Flags  
+        if (is_stop_increase) then is_stop_increase = false end
+    end
+   
+    -- LOSE
+    if (!win) then
+        print("LOSE")
+        wincount = 0 
+        losecount = losecount + 1
+        
+        if (is_stop_increase) then
+            nextbet = minimum_bet
+        else
+            if (wait_count > 0) then
+                wait_count = wait_count - 1
+            else
+                if (previousbet == minimum_bet) then
+                    if (minimum_bet == base_bet) then
+                        nextbet = base_bet * multiplier
+                    else
+                        nextbet = base_bet
+                    end
+                else
+                    nextbet = previousbet * multiplier
+                end
+            end
+        end    
+
+        -- stop losses
+        next_balance = balance - nextbet
+        if (next_balance <= lower_limit and !is_stop_increase) then
+            print("[stop_losses] " .. string.format("%.8f", next_balance) .. " <= " .. string.format("%.8f", lower_limit))
+            is_stop_increase = true
+            nextbet          = minimum_bet
+            -- Set Second
+            wait_count_base  = wait_count_second
+            wait_count       = wait_count_base
+            lower_limit_base = lower_limit_second
+            base_bet         = start_bet_second
+            multiplier       = multiplier_second
+            if (saved_balance == 0) then
+                -- Save Balance
+                saved_balance = increase_start_balance
+            else
+                -- Reset after half recovery
+                numerical_difference = increase_start_balance - balance
+                saved_balance        = balance + (numerical_difference / 2)
+            end
+            set_lower_limit()
         end
     end
 
-    bethigh = true
-
-    if balance < nextbet then
+    print("----")
+    print("Total Win : " .. totalwin)
+    msg_maxlosecount = " ( Max : " .. maxlosecount .. " )"
+    msg_minlosecount = " ( Min : " .. minlosecount .. " )"
+    msg_avelosecount = " ( Average : " .. sumlosecount / totalwin .. " )"    
+    print("Lose Count : " .. losecount .. msg_maxlosecount .. msg_minlosecount .. msg_avelosecount)
+    print("Saved Balance : " .. string.format("%.8f", saved_balance))
+    print("Next Balance : " .. string.format("%.8f", next_balance))
+    
+    -- Stop
+    if (0 < stop_balance and next_balance <= stop_balance) then
+        print("Stop Lose!")
         stop()
-        print(balance)
-        print("You lose!")
     end
-
-    if balance >= target then
+    if (target_balance < balance) then
+        print("Stop Win!")
+        ching()
         stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
     end
-
-    if base2 < base1 then
-        base2 = base1
-    end
-
-    chance = math.random(30, 55)
-
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
-
-    if profit > 0 then
-        base2 = base1
-    end
-
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
-    end
-
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
-
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+ 
 end
