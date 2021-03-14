@@ -4,97 +4,91 @@
 -- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
 -- Similar to other coins.
 
--- SCRIPT 04
+-- SCRIPT 92
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+betcalc      = 0.529 --(<-- Edit your betcalc for risk management)
+bethigh      = true
+stopnow      = false
+first        = true
+done         = true
+chance       = 48
+betcount     = 1
+profittarget = balance * 1.1 --(<-- Edit your Profit target for stop!!!)
 
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+if (betcalc < 0.001) then 
+  print("Please set betcalc then restart the script") 
+  stop() 
+end
+
+base    = balance * (betcalc / 100000)
+curbet  = base * 3.7255
+nextbet = base
 
 function dobet()
+  r = math.random(2)
+  if r == 1 then
+      bethigh = true
+  else
+      bethigh = false
+  end
+  
+  if betcount == 1 then
+    betcount=0
+    resetseed();
+  else
+    betcount=betcount+1
+  end
+  
+  if (balance) >= profittarget then
+    ching()
+    alarm()
+    stop()
+    print(balance)
+    print("PROFIT TARGET ACHIEVED!!!")
+  end
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
+  if (balance) < (nextbet) then
+    ching()
+    alarm()
+    stop()
+    print(balance)
+    print("BALANCE INSUFFICIENT FUNDS")
+  end
+  
+  base = balance * (betcalc / 100000)  
+  if (first) then
+    if(stopnow) then stop() end
+    if !win then
+      chance  = math.random(45,50)
+      nextbet = curbet
+      first   = false
+      done    = true
     end
+  end
 
-    bethigh = true
-
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
-    end
-
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
-
-    if base2 < base1 then
-        base2 = base1
-    end
-
-    chance = math.random(30, 55)
-
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
-
-    if profit > 0 then
-        base2 = base1
-    end
-
+  if(!first and !done) then
+    if(stopnow) then stop() end
     if win then
-        chance  = math.random(10, 15)
-        nextbet = base
+      chance  = 27.5
+      curbet  = base * 3.7255
+      nextbet = base
+      first   = true
+      done    = true
     else
-        nextbet = previousbet * multi
+      curbet  = curbet * 3.7255
+      nextbet = curbet
+      chance  = 72.5
     end
-
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
-
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+  end
+  print("=========================================")
+  print(" ")
+  print("You Won ") 
+  print(profit) 
+  print(" for this Session")
+  print(" ")
+  print("Your Balance is ") 
+  print(balance)
+  print(" ")
+  print("=========================================")
+  done = false
 end
