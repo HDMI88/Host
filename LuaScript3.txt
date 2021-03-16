@@ -7,95 +7,631 @@
 
 -- SCRIPT 03
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+SiteEdge = 1
+Base95Initial = 0.00000020
+Base90Initial = 0.00000010
+Base50Initial = 0.00000001
+Base25Initial = 0.00000001
+Base05Initial = 0.00000001
 
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+Multi95 = 25
+Multi90 = 11
+Multi50 = 2.05
+Multi25 = 1.35
+Multi05 = 1.06
+
+SetMultiToAuto = false
+
+Chose95MaxLevelBase = 3
+Chose90MaxLevelBase = 5
+Chose50MaxLevelBase = 21
+Chose25MaxLevelBase = 52
+Chose05MaxLevelBase = 180
+
+Level95Start = 2
+Level50Start = 3
+Level25Start = 7
+Level05Start = 75
+Level90Start = 2
+
+stop_if_balance     = balance * 1.1   --set limit to stop script, stop if balance > value
+stop_if_bets_number = 1000000    --set how many bets do you want to play, it stop at win
+stop_if_win_percent = 100      --stop if win x% from balance
+------------------ End Tuning Settings -----------------------
+
+--DO NOT CHANGE THIS:
+
+BalanceStart = balance
+
+
+Count95Plus    = 0
+Count95Minus   = 0
+Count90Plus    = 0
+Count90Minus   = 0
+Count50Plus    = 0
+Count50Minus   = 0
+Count25Plus    = 0
+Count25Minus   = 0
+Count05Plus    = 0
+Count05Minus   = 0
+
+Count95LoseMax = 0
+Count95Lose    = 0
+Count90LoseMax = 0
+Count90Lose    = 0
+Count50LoseMax = 0
+Count50Lose    = 0
+Count25LoseMax = 0
+Count25Lose    = 0
+Count05LoseMax = 0
+Count05Lose    = 0
+
+chance   = 50
+chance95 = 95
+chance90 = 90
+chance50 = 50
+chance25 = 25
+chance05 = 5
+
+base         = Base50Initial
+nextbet      = Base50Initial
+BetsMaxValue = math.max(Chose05MaxLevelBase,Chose25MaxLevelBase,Chose50MaxLevelBase,Chose90MaxLevelBase)
+
+resetstats()
+
+BetsValue={}
+for i = 1,BetsMaxValue do
+   BetsValue[i] = -1
+end
+
+if SetMultiToAuto == true then
+   Multi95        = 0
+   Multi90        = 0
+   Multi50        = 0
+   Multi25        = 0
+   Multi05        = 0
+end
+
+function MinMulti(SiteEdge, chancex)
+   PayOut    = (100-SiteEdge)/chancex
+   MinMultix = PayOut /(PayOut - 1)
+   return MinMultix
+end
+
+print("")
+print("-------------------------------------------------------------------------------")
+print("")
+print("                      SiteEdge: "..SiteEdge )
+print("")
+print("-------------------------------------------------------------------------------")
+
+
+if Multi95  < MinMulti(SiteEdge,chance95) then
+   Multi95 = MinMultix
+end
+print("Miniumum value for Multi95 is: "..MinMultix)
+
+if Multi90  < MinMulti(SiteEdge,chance90) then
+   Multi90 = MinMultix
+end
+print("Miniumum value for Multi90 is: "..MinMultix)
+
+if Multi50  < MinMulti(SiteEdge,chance50) then
+   Multi50 = MinMultix
+end
+print("Miniumum value for Multi50 is: "..MinMultix)
+
+if Multi25  < MinMulti(SiteEdge,chance25) then
+   Multi25 = MinMultix
+end
+print("Miniumum value for Multi25 is: "..MinMultix)
+
+if Multi05  < MinMulti(SiteEdge,chance05) then
+   Multi05 = MinMultix
+end
+print("Miniumum value for Multi05 is: "..MinMultix)
+print("")
+print("-------------------------------------------------------------------------------")
+print("")
 
 function dobet()
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
-    end
+   print("---------------------------------------------------------------------------")
+   print("")
 
-    bethigh = true
+   --stop conditions--
+   if balance >= stop_if_balance then
+      print("----------------------------------------")
+      print("Balance target reached. Win!! Stop!!")
+      print("----------------------------------------")
+      stop()
+   end
+   if bets >= stop_if_bets_number and win then
+      print("------------------------------------------")
+      print("Bets number target reached. Win!! Stop!!")
+      print("------------------------------------------")
+      stop()
+   end
+   if (profit*100)/BalanceStart >= stop_if_win_percent then
+      print("---------------------------------------------")
+      print("Profit percent target reached. Win!! Stop!!")
+      print("---------------------------------------------")
+      stop()
+   end
 
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
-    end
+   -- Find maximum number of consecutive losing rolls can be done with current balance at x% chance and find minimum/optimum base for start bets --
+   Wallet = balance
+   function FindBase (DesiredLevelBase, Wallet, BaseInitial, Multiplier)
+      Level = {}
+      Level[1] = Wallet - Wallet/Multiplier
 
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
+      i=1
+      while(Level[i] > BaseInitial) do
+         Level[i+1] = Level[i] / Multiplier
+         i=i+1
+      end
+      LevelMax = i-1
 
-    if base2 < base1 then
-        base2 = base1
-    end
+      if DesiredLevelBase >  LevelMax then
+         DesiredStartBase = LevelMax
+      else
+         DesiredStartBase = DesiredLevelBase
+      end
+      BaseLevelUsed = Level[DesiredStartBase]
+   end
 
-    chance = math.random(30, 55)
+   FindBase(Chose95MaxLevelBase,Wallet,Base95Initial,Multi95)
+   Base95Used  = BaseLevelUsed
+   Level95Max  = LevelMax
+   Level95Used = DesiredStartBase
 
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
+   FindBase(Chose90MaxLevelBase,Wallet,Base90Initial,Multi90)
+   Base90Used  = BaseLevelUsed
+   Level90Max  = LevelMax
+   Level90Used = DesiredStartBase
 
-    if profit > 0 then
-        base2 = base1
-    end
+   FindBase(Chose50MaxLevelBase,Wallet,Base50Initial,Multi50)
+   Base50Used = BaseLevelUsed
+   Level50Max = LevelMax
+   Level50Used = DesiredStartBase
 
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
-    end
+   FindBase(Chose25MaxLevelBase,Wallet,Base25Initial,Multi25)
+   Base25Used = BaseLevelUsed
+   Level25Max = LevelMax
+   Level25Used = DesiredStartBase
 
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
+   FindBase(Chose05MaxLevelBase,Wallet,Base05Initial,Multi05)
+   Base05Used = BaseLevelUsed
+   Level05Max = LevelMax
+   Level05Used = DesiredStartBase
 
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
+   --Set Array for Rolls Value--
 
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
+   for i = BetsMaxValue,2,-1 do
+      BetsValue[i] = BetsValue[i-1]
+   end
+   BetsValue[1] = lastBet.Roll
 
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
+   --counting start condition for bets at 50% chance--
 
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
+   Count50Plus = 0
+   Count50Minus = 0
+   for i = 1,Level50Start do
+      if  BetsValue[i] < 50 and BetsValue[i] >= 0 then
+         Count50Minus = Count50Minus + 1
+      end
+      if BetsValue[i] >= 50 then
+         Count50Plus = Count50Plus + 1
+      end
+   end
 
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
+   --counting start condition for bets at 25% chance--
 
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+   Count25Plus = 0
+   Count25Minus = 0
+   for i = 1,Level25Start do
+      if  BetsValue[i] < 75 and BetsValue[i] >= 0 then
+         Count25Minus = Count25Minus + 1
+      end
+      if BetsValue[i] >= 25 then
+         Count25Plus = Count25Plus + 1
+      end
+   end
+
+   --counting start condition for bets at 05% chance--
+
+   Count05Plus = 0
+   Count05Minus = 0
+   for i = 1,Level05Start do
+      if  BetsValue[i] < 95 and BetsValue[i] >= 0 then
+         Count05Minus = Count05Minus + 1
+      end
+      if BetsValue[i] >= 05 then
+         Count05Plus = Count05Plus + 1
+      end
+   end
+
+   --counting start condition for bets at 90% chance--
+
+   Count90Plus  = 0
+   Count90Minus = 0
+   for i        = 1,Level90Start do
+      if  BetsValue[i] < 10 and BetsValue[i] >= 0 then
+         Count90Minus = Count90Minus + 1
+      end
+      if BetsValue[i] >= 90 then
+         Count90Plus = Count90Plus + 1
+      end
+   end
+
+   --counting start condition for bets at 95% chance--
+
+   Count95Plus = 0
+   Count95Minus = 0
+   for i = 1,Level95Start do
+      if  BetsValue[i] < 5 and BetsValue[i] >= 0 then
+         Count95Minus = Count95Minus + 1
+      end
+      if BetsValue[i] >= 95 then
+         Count95Plus = Count95Plus + 1
+      end
+   end
+
+
+
+   if win then
+      -------------------set option 1 - bet50% chance - default if win
+
+      Option = 1
+      nextbet = Base50Initial
+      chance = chance50
+      if lastBet.Roll < 50 then
+         bethigh = true
+      else
+         bethigh = false
+      end
+
+      -------------------set option 2 - bet 50% chance low
+
+      if Count50Plus >= Level50Start then
+         Option = 2
+         nextbet = Base50Used
+         chance = chance50
+         bethigh = false
+      end
+
+      -------------------set option 3 - bet 50% chance high
+
+      if Count50Minus >= Level50Start then
+         Option = 3
+         nextbet = Base50Used
+         chance = chance50
+         bethigh = true
+      end
+
+      -------------------set option 6 - bet 25% chance low
+
+      if Count25Plus >= Level25Start then
+         Option = 4
+         nextbet = Base25Used
+         chance = chance25
+         bethigh = false
+      end
+
+      -------------------set option 7 - bet 25% chance high
+
+      if Count25Minus >= Level25Start then
+         Option = 5
+         nextbet = Base25Used
+         chance = chance25
+         bethigh = true
+      end
+
+      -------------------set option 10 - bet 90% chance low
+
+      if Count90Plus >= Level90Start then
+         Option  = 10
+         nextbet = Base90Used
+         chance  = chance90
+         bethigh = false
+      end
+
+      -------------------set option 11 - bet 90% chance high
+
+      if Count90Minus >= Level90Start then
+         Option  = 11
+         nextbet = Base90Used
+         chance  = chance90
+         bethigh = true
+      end
+
+      -------------------set option 4 - bet 05% chance low
+
+      if Count05Plus >= Level05Start then
+         Option = 6
+         nextbet = Base05Used
+         chance = chance05
+         bethigh = false
+      end
+
+      -------------------set option 5 - bet 05% chance high
+
+      if Count05Minus >= Level05Start then
+         Option = 7
+         nextbet = Base05Used
+         chance = chance05
+         bethigh = true
+      end
+
+      -------------------set option 8 - bet 95% chance low
+
+      if Count95Plus >= Level95Start then
+         Option = 8
+         nextbet = Base95Used
+         chance = chance95
+         bethigh = false
+      end
+
+      -------------------set option 9 - bet 95% chance high
+
+      if Count95Minus >= Level95Start then
+         Option = 9
+         nextbet = Base95Used
+         chance = chance95
+         bethigh = true
+      end
+
+      Count95Lose = 0
+      Count90Lose = 0
+      Count50Lose = 0
+      Count25Lose = 0
+      Count05Lose = 0
+
+      -----------------------------------------------------------------set else Options
+   else
+      if Option == 1 then
+         if Count50Plus >= Level50Start then
+            Option  = 2
+            nextbet = Base50Used
+            chance  = chance50
+            bethigh = false
+         end
+
+         if Count90Plus >= Level90Start then
+            Option  = 10
+            nextbet = Base90Used
+            chance  = chance90
+            bethigh = false
+         end
+
+         -------------------set option 11 - bet 90% chance high
+
+         if Count90Minus >= Level90Start then
+            Option  = 11
+            nextbet = Base90Used
+            chance  = chance90
+            bethigh = true
+         end
+
+         -------------------set option 3 - bet 50% chance high
+
+         if Count50Minus >= Level50Start then
+            Option = 3
+            nextbet = Base50Used
+            chance = chance50
+            bethigh = true
+         end
+
+         -------------------set option 6 - bet 25% chance low
+
+         if Count25Plus >= Level25Start then
+            Option = 4
+            nextbet = Base25Used
+            chance = chance25
+            bethigh = false
+         end
+
+         -------------------set option 7 - bet 25% chance high
+
+         if Count25Minus >= Level25Start then
+            Option = 5
+            nextbet = Base25Used
+            chance = chance25
+            bethigh = true
+         end
+
+         -------------------set option 4 - bet 05% chance low
+
+         if Count05Plus >= Level05Start then
+            Option = 6
+            nextbet = Base05Used
+            chance = chance05
+            bethigh = false
+         end
+
+         -------------------set option 5 - bet 05% chance high
+
+         if Count05Minus >= Level05Start then
+            Option = 7
+            nextbet = Base05Used
+            chance = chance05
+            bethigh = true
+         end
+
+         -------------------set option 8 - bet 95% chance low
+
+         if Count95Plus >= Level95Start then
+            Option = 8
+            nextbet = Base95Used
+            chance = chance95
+            bethigh = false
+         end
+
+         -------------------set option 9 - bet 95% chance high
+
+         if Count95Minus >= Level95Start then
+            Option = 9
+            nextbet = Base95Used
+            chance = chance95
+            bethigh = true
+         end
+      end
+
+      --set nextbet for bets (plus) at 50% chance in case of lose
+      if Option == 2 then
+         nextbet = previousbet * Multi50
+         bethigh = false
+         chance = chance50
+
+         Count50Lose = Count50Lose + 1
+         if Count50Lose > Count50LoseMax then
+            Count50LoseMax = Count50Lose
+         end
+      end
+
+      --set nextbet for bets (minus) at 50% chance in case of lose
+
+      if Option == 3 then
+         nextbet = previousbet * Multi50
+         bethigh = true
+         chance = chance50
+
+         Count50Lose = Count50Lose + 1
+         if Count50Lose > Count50LoseMax then
+            Count50LoseMax = Count50Lose
+         end
+      end
+      -----------
+
+      --set nextbet for bets (plus) at 25% chance in case of lose
+      if Option == 4 then
+         nextbet = previousbet * Multi25
+         bethigh = false
+         chance = chance25
+
+         Count25Lose = Count25Lose + 1
+         if Count25Lose > Count25LoseMax then
+            Count25LoseMax = Count25Lose
+         end
+      end
+
+      --set nextbet for bets (minus) at 25% chance in case of lose
+
+      if Option == 5 then
+         nextbet = previousbet * Multi25
+         bethigh = true
+         chance = chance25
+
+         Count25Lose = Count25Lose + 1
+         if Count25Lose > Count25LoseMax then
+            Count25LoseMax = Count25Lose
+         end
+      end
+
+      --set nextbet for bets (plus) at 05% chance in case of lose
+      if Option == 6 then
+         nextbet = previousbet * Multi05
+         bethigh = false
+         chance = chance05
+
+         Count05Lose = Count05Lose + 1
+         if Count05Lose > Count05LoseMax then
+            Count05LoseMax = Count05Lose
+         end
+      end
+
+      --set nextbet for bets (minus) at 05% chance in case of lose
+
+      if Option == 7 then
+         nextbet = previousbet * Multi05
+         bethigh = true
+         chance = chance05
+
+         Count05Lose = Count05Lose + 1
+         if Count05Lose > Count05LoseMax then
+            Count05LoseMax = Count05Lose
+         end
+      end
+
+      --set nextbet for bets (plus) at 95% chance in case of lose
+      if Option == 8 then
+         nextbet = previousbet * Multi95
+         bethigh = false
+         chance = chance95
+
+         Count95Lose = Count95Lose + 1
+         if Count95Lose > Count95LoseMax then
+            Count95LoseMax = Count95Lose
+         end
+      end
+
+      --set nextbet for bets (minus) at 95% chance in case of lose
+
+      if Option == 9 then
+         nextbet = previousbet * Multi95
+         bethigh = true
+         chance = chance95
+
+         Count95Lose = Count95Lose + 1
+         if Count95Lose > Count95LoseMax then
+            Count95LoseMax = Count95Lose
+         end
+      end
+
+      --set nextbet for bets (plus) at 90% chance in case of lose
+      if Option == 10 then
+         nextbet = previousbet * Multi90
+         bethigh = false
+         chance  = chance90
+
+         Count90Lose = Count90Lose + 1
+         if Count90Lose > Count90LoseMax then
+            Count90LoseMax = Count90Lose
+         end
+      end
+
+      --set nextbet for bets (minus) at 90% chance in case of lose
+
+      if Option == 11 then
+         nextbet = previousbet * Multi90
+         bethigh = true
+         chance  = chance90
+
+         Count90Lose = Count90Lose + 1
+         if Count90Lose > Count90LoseMax then
+            Count90LoseMax = Count90Lose
+         end
+      end
+   end
+
+   PercentProfit = (profit*100)/BalanceStart
+
+   print("Base95Start: "..string.format("%8.8f",Base95Used).."  I  Level95Max: "..Level95Max.."  I  Level95Used: "..Level95Used)
+   print("MaxLose95: ".. Count95LoseMax.."  I  Multi95: "..Multi95)
+   print("")
+
+
+   print("Base90Start: "..string.format("%8.8f",Base90Used).."  I  Level90Max: "..Level90Max.."  I  Level90Used: "..Level90Used)
+   print("MaxLose90: ".. Count90LoseMax.."  I  Multi90: "..Multi90)
+   print("")
+
+   print("Base50Start: "..string.format("%8.8f",Base50Used).."  I  Level50Max: "..Level50Max.."  I  Level50Used: "..Level50Used)
+   print("MaxLose50: ".. Count50LoseMax.."  I  Multi50 "..Multi50)
+   print("")
+
+   print("Base25Start: "..string.format("%8.8f",Base25Used).."  I  Level25Max: "..Level25Max.."  I  Level25Used: "..Level25Used)
+   print("MaxLose25: ".. Count25LoseMax.."  I  Multi25: "..Multi25)
+   print("")
+
+
+   print("Base05Start: "..string.format("%8.8f",Base05Used).."  I  Level05Max: "..Level05Max.."  I  Level05Used: "..Level05Used)
+   print("MaxLose05: ".. Count05LoseMax.."  I  Multi05: "..Multi05)
+   print("")
+
+   print("Profit: "..string.format("%8.8f",PercentProfit).."% = "..string.format("%8.8f",profit).." Coin".." at "..bets.." Bets")
+   print("")
+
+   ExpectedBets = math.floor((stop_if_win_percent*bets)/PercentProfit)
+   print("Expected "..stop_if_win_percent.."% profit at: "..ExpectedBets.." bets")
+   print("")
 end
