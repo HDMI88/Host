@@ -4,97 +4,141 @@
 -- You have 0.001 BTC, test with 0.001 Doge about 1 day to find the most effective strategy, least risk. Then apply that strategy setting to 0.001 BTC.
 -- Similar to other coins.
 
--- SCRIPT 04
+-- SCRIPT 102
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+chance=95
 
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+-- risk factor. Less is riskier!
+fator=1000000
+-- 1% loss
+floss=0.99
+-- 2% Gain
+stopgain=balance * 1.02
+
+-- streak after which reduction is applied
+smax=40
+fator2=fator * 1.5
+
+
+multiplier=5
+vquedas=0
+maxquedas=2
+
+bal={}
+bal[0]=balance
+base=balance/fator
+if(base<0.0000002) then
+   base=0.0000002
+end
+
+stoploss=balance*floss
+stopprofit=false
+nextbet=base
+resetseed()
+resetstats()
+sorte=0
+stopwin=false
+stopprofit=false
+vfator=fator
 
 function dobet()
+   highlow()
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
-    end
+   status()
+   if win then
+      if(currentstreak>smax) then
+         vfator=fator2
+      else
+         vfator=fator
+      end
+      if (stopwin==true) then
+         stop()
+      end
+      if(balance>bal[0]) then
+         if (stopprofit==true) then
+            stop()
+         end
+         testasaida()
+         bal[0]=balance
+         vquedas=0
+         base=balance/vfator
+         if(base<0.0000002) then
+            base=0.0000002
+         end
+         nextbet=base
+         ajustanextbet()
+         stoploss=balance*floss
+      else
+         nextbet=previousbet
+      end
+   else
+      vquedas +=1
 
-    bethigh = true
+      if(vquedas==maxquedas) then
+         vquedas=0
+         nextbet=previousbet /2
+      else
+         nextbet=previousbet * multiplier
+         ajustanextbet()
+      end
 
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
-    end
+      if((balance-nextbet)<stoploss) then
+         print ("StopLoss")
+         stop()
+      end
 
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
 
-    if base2 < base1 then
-        base2 = base1
-    end
+   end
 
-    chance = math.random(30, 55)
+   calcsorte()
+end
 
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
+function status()
+   print("Target:"..stopgain)
+   print("S.Loss:"..stoploss)
+   print("Profit :"..string.format("%.8f",profit))
+   print("Streak:"..currentstreak)
+   print("W/L:"..wins/losses)
+   print("--------------------")
+   print("X5_Div2.txt")
+   print("Fator :"..vfator)
+   print("multiplier :"..multiplier)
+   print("Loss: "..vquedas)
+   print("Luck :"..string.format("%.2f",sorte))
+end
 
-    if profit > 0 then
-        base2 = base1
-    end
+function testasaida()
+   if(balance>=stopgain) then
+      Print("Lucro alcançado")
+      stop()
+   end
 
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
-    end
+   if (stopprofit==true) then
+      if(balance>bal[0]) then
+         print("Saindo... StopProfit")
+         stop()
+      end
+   end
+end
 
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
+function calcsorte()
+   sorte=((wins/bets)/(chance/100))*100
+end
 
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
+function highlow()
+   if(lastBet.roll>chance) then
+      bethigh=false
+   end
+   if(lastBet.roll<(100-chance)) then
+      bethigh=true
+   end
+end
 
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+function ajustanextbet()
+   minbet  = 0.00000020
+   x       = nextbet
+   nextbet = (math.floor(x/minbet))*minbet
+   if(nextbet<minbet) then
+      nextbet = minbet
+   end
 end
