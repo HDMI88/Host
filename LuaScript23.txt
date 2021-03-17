@@ -5,97 +5,228 @@
 -- Similar to other coins.
 -- PLEASE STOP PLAYING WHEN PROFIT CHART OR MARKET IS FLAT OR SIDEWAYS.
 
--- SCRIPT 04
+-- SCRIPT 23
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
+chance1 = 82.541  -->1.2X payout
+chance2 = 76.221  -->1.3X payout
+chance3 = 70.783  -->1.4X Payout
+chance4 = 66.051  -->1.5X Payout
+chance5 = 47.102  -->2.1X Payout
+chance6 = 30.948  -->3.2X Payout
+chance7 = 25.025  -->3.95X Payout
 
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+m1 = 6.504
+m2 = 4.501
+m3 = 3.752
+m4 = 3.1
+m5 = 2
+m6 = 1.551
+m7 = 1.423
+
+target = balance * 1.1               --> Set your Target Profit here
+
+betfactor = 0.000001               --> "Safest" for 0.001 BTC and 0.1 Eth Bankroll
+basebet   = 0.00000001   --> 1 satoshi basebet for 0.001 BTC and 100 Ethoshis for 0.1 Eth Bankroll
+nextbet   = basebet
+chance    = chance1
+bethigh   = false
+betcount  = 0
+session   = 0
+
+wincount=0
+lostchance=0
+losecount=0
+low=0
+high=0
+counter=0
 
 function dobet()
+   betroll()
+   rstseed()
+   viewstats()
+   betcount+=1
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
-    end
+   if win then
+      if balance>target then
+         stop()
+         print("TARGET REACHED!")
+      end
 
-    bethigh = true
+      hilo()
+      basebet = balance*betfactor
 
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
-    end
+      if basebet < 0.00000001 then
+         basebet = 0.00000001
+         nextbet = basebet
+      end
 
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
+      nextbet=basebet
+      wincount+=1
+      losecount=0
+      if wincount>0 then
+         chance=chance1
+         lostchance=1
+      end
 
-    if base2 < base1 then
-        base2 = base1
-    end
+      if wincount>2 then
+         chance=chance2
+         lostchance=2
+      end
 
-    chance = math.random(30, 55)
+      if wincount>4 then
+         chance=chance3
+         lostchance=3
+      end
 
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
+      if wincount>6 then
+         chance=chance4
+         lostchance=4
+      end
 
-    if profit > 0 then
-        base2 = base1
-    end
+      if wincount>8 then
+         chance=chance5
+         lostchance=5
+      end
 
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
-    end
+      if wincount>10 then
+         chance=chance6
+         lostchance=6
+      end
 
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
+      if wincount>12 then
+         chance=chance7
+         lostchance=7
+      end
 
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
 
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
+      if wincount>14 then
+         chance=chance1
+         lostchance=1
+         wincount=0
+         session+=1
+         low=0
+         high=0
+      end
 
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
+   else
+      nextbet=previousbet*m1
+      losecount+=1
 
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
+      if lostchance==1 then
+         if chance==chance1 then
+            nextbet=previousbet*m1
+         else
+            chance=chance1
+            nextbet=previousbet*m1
+         end
+      end
 
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
+      if lostchance==2 then
+         if chance==chance2 then
+            nextbet=previousbet*m2
+         else
+            chance=chance1
+            nextbet=previousbet*m2
+         end
+      end
 
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+      if lostchance==3 then
+         if chance==chance3 then
+            nextbet=previousbet*m3
+         else
+            chance=chance1
+            nextbet=previousbet*m3
+         end
+      end
+
+      if lostchance==4 then
+         if chance==chance4 then
+            nextbet=previousbet*m4
+         else
+            chance=chance1
+            nextbet=previousbet*m4
+         end
+      end
+
+      if lostchance==5 then
+         if chance==chance5 then
+            nextbet=previousbet*m5
+         else
+            chance=chance1
+            nextbet=previousbet*m5
+         end
+      end
+
+      if lostchance==6 then
+         if chance==chance6 then
+            nextbet=previousbet*m6
+         else
+            chance=chance1
+            nextbet=previousbet*m6
+         end
+      end
+
+      if lostchance==7 then
+         if chance==chance7 then
+            nextbet=previousbet*m7
+         else
+            chance=chance1
+            nextbet=previousbet*m7
+         end
+      end
+   end
+end
+
+function hilo()
+   if high > low then
+      bethigh=true
+   else
+      bethigh=false
+   end
+
+   if (high-low) > 15 then
+      bethigh=false
+   end
+
+   if (low-high)> 15 then
+      bethigh=true
+   end
+end
+
+function betroll()
+   if (lastBet.roll < chance) then
+      low += 1
+   end
+
+   if (lastBet.roll > (99.99 - chance)) then
+      high += 1
+   end
+
+end
+
+function rstseed()
+   if counter==500 then
+
+      resetseed()
+      counter=0
+      low=0
+      high=0
+   else
+
+      counter+=1
+
+   end
+end
+
+function viewstats()
+   print(" ")
+   print("Total Bet : "..betcount)
+   print("Current Streak Loss : "..losecount)
+   print("Session Win : "..wincount)
+   print("Total Sessions : "..session)
+   print("Current Profit : "..string.format("%.8f",profit))
+   print("Target Profit : "..string.format("%.8f",target))
+   print("Current Balance : "..string.format("%.8f",balance))
+   print("High :"..high.." / ".."Low :"..low)
+   print(" ")
 end
