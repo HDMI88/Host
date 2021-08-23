@@ -4,7 +4,7 @@
 -- Similar to other coins.
 -- PLEASE STOP PLAYING WHEN PROFIT CHART OR MARKET IS FLAT OR SIDEWAYS.
 
--- EXAMPLE SCRIPT. UPDATED: 02/06/2021 --
+-- EXAMPLE SCRIPT. UPDATED: 23/08/2021 --
 
 chance       = 50                    
 base         = balance * 0.00000010 
@@ -68,12 +68,12 @@ function dobet()
     end
 
     if currentstreak == -1 then
-        chance  = math.random(10, 15)
+        chance  = math.random(15, 20)
         nextbet = base2 * 1.18
     end
 
     if currentstreak == -2 then
-        chance  = math.random(10, 15)
+        chance  = math.random(20, 25)
         nextbet = previousbet
     end
 
@@ -82,7 +82,7 @@ function dobet()
     end
 
     if currentstreak == -3 then
-        chance  = math.random(10, 15)
+        chance  = math.random(25, 30)
         nextbet = previousbet
     end
 
@@ -92,7 +92,7 @@ function dobet()
 
     if currentstreak == -4 then
         nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
+        chance  = math.random(45, 65)
     end
 
     print("currentstreak = "..currentstreak)
