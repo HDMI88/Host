@@ -92,15 +92,17 @@
 
 
 
-👉 Step 1: Create a new account via my referral link: https://cutt.ly/OmlY3UI
+👉 Step 1: To make a profit of both coins at the same time. Create a new account via my referral link: https://bit.ly/3zs5fhA
 
-👉 Step 2: After you create an account successfully, send "username" to me.
+👉 Step 2: To sell any crypto(token). Create a new account via my referral link: https://bit.ly/2Wt2ZIK
 
-👉 Step 3: Deposit crypto to your account. You can deposit any crypto but I recommend you deposit BTC, BCH, ETH, BNB, LTC. Minimum 0.015.
+👉 Step 3: After you create an account successfully, send "username" to me.
 
-👉 Step 4: Write down and save the balance of BFG for later comparison.
+👉 Step 4: Deposit crypto to your account. You can deposit any crypto but I recommend you deposit BTC, BCH, ETH, BNB, LTC. Minimum 0.015.
 
-👉 Step 5: On NCT Dicebot:
+👉 Step 5: Write down and save the balance of BFG for later comparison.
+
+👉 Step 6: On NCT Dicebot:
 	- ✍️ Set Bet amount = balance/100000
 	- ✍️ Set Stop on profit = balance/100 (or equal to the balance to run 24/7)
 	- ✍️ Set Stop on loss = balance/10 (or equal to balance to run 24/7)
