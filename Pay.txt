@@ -96,11 +96,11 @@
 
 👉 Step 2: Deposit crypto to your account. You can deposit any crypto but I recommend you deposit BTC, BCH, ETH, BNB, LTC. Minimum 0.015.
 
-👉 Step 3: To sell any crypto(token). Create a new account via my referral link: https://bit.ly/2Wt2ZIK
+👉 Step 3: To sell any crypto(token). Connect your wallet via my referral link: https://bit.ly/2Wt2ZIK
 
-👉 Step 4: After you create an account successfully, send "username" to me. After you create an account successfully, send me the "username" of the above two sites.
+👉 Step 4: After you create an account successfully, send "username" of the first site and "wallet address" of the second site to me.
 
-👉 Step 5: Write down and save the balance of BFG for later comparison.
+👉 Step 5: Open the first site, write down and save the balance of BFG for later comparison.
 
 👉 Step 6: On NCT Dicebot:
 	- ✍️ Set Bet amount = balance/100000
