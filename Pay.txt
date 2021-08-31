@@ -103,7 +103,7 @@
 👉 Step 5: Open https://bit.ly/3zs5fhA, write down and save the balance of BFG for later comparison.
 
 👉 Step 6: On NCT Dicebot:
-	- ✍️ Set Bet amount = balance/100000
+	- ✍️ Set Bet amount = balance/1000000
 	- ✍️ Set Stop on profit = balance/100 (or equal to the balance to run 24/7)
 	- ✍️ Set Stop on loss = balance/10 (or equal to balance to run 24/7)
 	- ✍️ Select "NCT Strategy" -> "Low Risk 1"
@@ -111,5 +111,7 @@
 
 ☠️ IMPORTANT:
 	👉 1. Set the correct parameters as above to run safely. Otherwise you will lose.
-	👉 2. The higher the balance, the higher the profit and the safer
+	👉 2. The higher the balance, the higher the profit and the safer.
 	👉 3. You can sell, swap, exchange BFG or any crypto (token) on: https://bit.ly/2Wt2ZIK
+	👉 4. You can exchange BFG to any crypto on Biswap https://bit.ly/2Wt2ZIK and withdraw it to your wallet. However, I recommend that you leave your BFG on the site to earn more profit on the "Staking" section: https://betfury.io/staking.
+	👉 5. Staking is the system of multicurrency daily drops for all BFG token holders. Every 24 hours, the Staking pool releases 3% of the total profit of the platform in each currency. The amount is shared among all users who hold BFG tokens. The more BFG tokens, the greater Staking income! BFG token became a tradable asset! Buy and Sell BFG tokens anytime!
