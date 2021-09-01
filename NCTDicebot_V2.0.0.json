@@ -1,0 +1,226 @@
+{
+    "Email":"nctgrape@gmail.com",
+    "Telegram":"https://t.me/NCTDicebot",
+    "TelegramChannel":"https://t.me/NCTDicebot_Channel",
+    "FacebookChannel":"https://www.facebook.com/groups/ncttechnology.net",
+    "YoutubeChannel":"https://www.youtube.com/c/NCTDicebot/videos",
+    "Website": "https://www.ncttechnology.net",
+    "Paypal": "nctgrape@gmail.com",
+    "Notification": "",
+    "Promotions": "",
+    "NCTDicebot":{
+        "LatestVersion": "1.2.4",
+        "LatestScript": "310821",
+        "Notification_1": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://www.ncttechnology.net/help.html', '_blank');\">👉 CLICK HERE: You must read all lines in 'TUTORIAL' carefully, think and follow. If not... You will lose and then you'll find ways to blame my bot.</div>",
+        "Notification_2": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3Arl1u4', '_blank');\">👉 CLICK HERE: Recommended dice sites, a lot of people are playing. Unlimited bet amount, fast speed. Support a lot of crypto: BTC, BCH, ETH, LTC, DOGE, XML, XRP, TRX, USDT, LINK, SHIB...</div>",
+        "Notification_3": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3qTPkFo', '_blank');\">👉 CLICK HERE: Recommended wallet (buy, sell, store, trading and exchange instantly between any cryptO). Low fees, fast, 2-step security, simple and easy to use, mobile app. I'm using it, great experience</div>",
+        "Notification_4": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3eiLyke', '_blank');\">👉 CLICK HERE: I will guide you how to maximize profits. Same bet however you will make a profit of both coins at the same time</div>",
+        "Notification_Update": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3xJCXOV', '_blank');\">👉 A new script is available. Click here to download</div>",
+        "Promotions_1": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://www.ncttechnology.net/#pricing', '_blank');\">👉 CLICK HERE: Flash sale, special offer: save up to 90%, buy 1 get 1 free. Don't miss out! Buy now before they're gone!</div>",
+        "Promotions_2": ""
+    },
+    "Biswap":{
+        "ReferLink":"https://biswap.org/?ref=b3f8dc9ca443ca530f7f"
+    },
+    "Binance":{
+        "ReferLink":"https://accounts.binance.com/en/register?ref=180242076",
+        "BTCAddress":"136WLYVaYnsSgWP34xXfBJPwXQqnVmBRzn",
+        "ETHAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "BNBAddress":"bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23",
+        "BNBMEMO":"370067094",
+        "USDTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ADAAddress":"DdzFFzCqrhskAtQPfeecouYeAWAaAqdKMmnM5VnzLBeJh69hiUPFQ8iyKutJNi3ZeF27CSRMK7RPAzPDZrafo57kuSjB12JS6ETGWAmc",
+        "XRPAddress":"rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+        "XRPMEMO":"375216633",
+        "DOGEAddress":"DAaQ1jnvZVCNNndxjatwXgYqTdfx6mx993",
+        "USDCAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "DOTAddress":"12azMty9asnHzepZDsXQVXZaAacy9u6tf4rf3bEvfSrwKkNF",
+        "UNIAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "BUSDAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "SOLAddress":"9VJYqG52MLCPPBwMySsh6MsiYuLF3S6nA9ke8NjUo8pm",
+        "BCHAddress":"136WLYVaYnsSgWP34xXfBJPwXQqnVmBRzn",
+        "LTCAddress":"LTnjoQeHq1ywHV9JzvT7jGa8xdDhGQuioV",
+        "LINKAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ICPAddress":"c8c01650f22d388f6beee4f4535cb553c087f624e6cb85bf0b32d39f68e6000f",
+        "WBTCAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "MATICAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ETCAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "XLMAddress":"GAHK7EEG2WWHVKDNT4CEQFZGKF2LGDSW2IVM4S5DP42RBW3K6BTODB4A",
+        "XLMMEMO":"107393851",
+        "VETAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "LUNAAddress":"terra1ncjg4a59x2pgvqy9qjyqprlj8lrwshm0wleht5",
+        "LUNAMEMO":"100736413",
+        "THETAAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "FILAddress":"f1bla25fvr3ouolgdtukfwssi3zzmfxuncpxh66lq",
+        "TRXAddress":"TLt1uyKLtUShCJhFKJJKeNCfEhozq55yLD",
+        "AAVEAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "FTTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "XMRAddress":"86GVEBxudThETrMTscCMbdFrZ47H1eSFn72B83TRo2XkSn3RckCyABFEoXYx4Fh8Gv7BoLuqKZB2SMURZgfvsEq29gstgJT",
+        "EOSAddress":"binancecleos",
+        "EOSMEMO":"102531838",
+        "AXSAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "GRTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "CAKEAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "KLAYAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "NEOAddress":"Ad9rKFzceJfibezcz8JXcJyUuK1i4KWw6c",
+        "MKRAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "SHIBAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ATOMAddress":"cosmos15v50ymp6n5dn73erkqtmq0u8adpl8d3ujv2e74",
+        "ATOMMEMO":"101435305",
+        "BTTAddress":"TLt1uyKLtUShCJhFKJJKeNCfEhozq55yLD",
+        "XTZAddress":"tz1NuhhiZksJTjcyRzv4hWQgmw68rJMdSCdD",
+        "ALGOAddress":"UTGUVPKRCVCU6GC3E4L2Q4V635V3FLYGNBJOG3KPL6PK3PTPECE7JVKSYU",
+        "AVAXAddress":"X-avax1e67lkgyp4terf0w2nue5vcm5mujn8qdcuak5u5",
+        "EGLDAddress":"erd1m7zlna3f7pw50dwgmlh8h6ru227gaajvq4yfttna0urs3xf5t29qsx4t53",
+        "COMPAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "KSMAddress":"GLtNeyguZEzFNFnxBquAVQCtB1QJRa9em1mriPYSGsChXwF",
+        "DCRAddress":"DsauncXLZxdNJWDVuhyBqj5sgQCfMY76J8X",
+        "CHZAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "HBARAddress":"0.0.16952",
+        "HBARMEMO":"1023682323",
+        "HOTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "WAVESAddress":"3PPtERPRyCwvc1kv6Su212WxD2EPP9XLZPz",
+        "QNTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "DASHAddress":"XsqzbSq4YnXyhPM2KX21T6VvXEmxEk9m86",
+        "TFUELAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "XEMAddress":"NC64UFOWRO6AVMWFV2BFX2NT6W2GURK2EOX6FFMZ",
+        "XEMMEMO":"100727449",
+        "ZECAddress":"t1U2SLUaaR4GSM7s7KTyH9WtwDEUo3rtcjT",
+        "STXAddress":"SP1P72Z3704VMT3DMHPP2CB8TGQWGDBHD3RPR9GZS",
+        "STXMEMO":"106826651",
+        "RUNEAddress":"bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23",
+        "RUNEMEMO":"370067094",
+        "HNTAddress":"14pfzpFtG6yMj3vuo2KAfsCAVczDa6E3CbdgW4xGpqBxWdYdXRB",
+        "SUSHIAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "MANAAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "NEARAddress":"045515f209ff32985af561e20a42f291e0936c227e25303d7a7fa7b8d137a054",
+        "RVNAddress":"RGGQFUNyJvrnER6JTnxVMGeQB4bo6t25MZ",
+        "YFIAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ENJAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "TUSDAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "IOTXAddress":"io1qujl9qf5vcvzcw969phhqx7h9vrmgj0sdfnx9l",
+        "SNXAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "ZILAddress":"zil1q6gd3l3wlxks4gcl9gjxwz75gldc6s3jrf6rwp",
+        "BATAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "QTUMAddress":"QYLF1zgWmhb5oCZb48RzvLSU69mSWcbCrK",
+        "BTGAddress":"GYpciTEg8xFUMM9WrN72LKK6fHhUjVTSZW",
+        "ONEAddress":"one1y5w5rhfps7fltv6scsraxq7q4wrr8qam3pcg9j",
+        "PAXAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "BNTAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7",
+        "DGBAddress":"D9gEp1GeQVVErFWhuYAuxvQYBKf3ZB62zz",
+        "BAKEAddress":"0x014f7242e908a8b7aeed69a3ac6e17d298a7e7f7"
+    },
+    "ReferralLinks":{
+        "Luckyfish":{
+            "ReferLink":"https://luckyfish.io/?c=usb001"
+        },
+        "BCGame":{
+            "ReferLink":"https://bc.game/i-7y0y4g3-n"
+        },
+        "Betfury":{
+            "ReferLink":"https://betfury.io/?r=5f80b027546f672d2863f941"
+        },
+        "Wolf":{
+            "ReferLink":"https://wolf.bet?c=usb001"
+        },
+        "Stake":{
+            "ReferLink":"https://stake.com/?c=usb001"
+        },
+        "Primedice":{
+            "ReferLink":"https://primedice.com/?c=usb001"
+        },
+        "Bitvest":{
+            "ReferLink":"https://bitvest.io?r=102545"
+        },
+        "Casinoroyale":{
+            "ReferLink":"https://casinoroyale.bet/ref/dmkkd7792"
+        },
+        "999dice":{
+            "ReferLink":"https://www.999dice.com/?169748066"
+        },
+        "Wintomato":{
+            "ReferLink":"https://wintomato.com/en/registration/2671"
+        },
+        "Bitsler":{
+            "ReferLink":"https://www.bitsler.com/?ref=face001"
+        },
+        "Duckdice":{
+            "ReferLink":"https://duckdice.com/a58142d373"
+        },
+        "CryptoGames":{
+            "ReferLink":"https://crypto.games?i=VkrdMjhuMq"
+        },
+        "Freebitco":{
+            "ReferLink":"https://freebitco.in/?r=14354465"
+        },
+        "Paradice":{
+            "ReferLink":"https://paradice.in/?c=usb001"
+        },
+        "Windice":{
+            "ReferLink":"https://windice.io/?r=l9zv09ovo"
+        },
+        "Sicodice":{
+            "ReferLink":"https://sicodice.com/?ref=msi001"
+        },
+        "Nanogames":{
+            "ReferLink":"https://n-3zymgyw.nanogames.io"
+        },
+        "Sharkoin":{
+            "ReferLink":"https://sharkoin.com/?ap=face001"
+        },
+        "Roobet":{
+            "ReferLink":"https://roobet.com/?ref=face001"
+        },
+        "Cryptoplay":{
+            "ReferLink":"https://cryptoplay.io/?c=face001-445"
+        },
+        "Betgalaxy":{
+            "ReferLink":"https://betgalaxy.io?ref=60df6471a1751800692036ac"
+        },
+        "Faucetpay":{
+            "ReferLink":"https://faucetpay.io/?r=2161383"
+        },
+        "Betking":{
+            "ReferLink":"https://betking.io/?ref=u:face001"
+        },
+        "Trustdice":{
+            "ReferLink":"https://trustdice.win/?ref=u_face001"
+        },
+        "Jacksclub":{
+            "ReferLink":"https://jacksclub.io?r=~face001"
+        },
+        "Pasino":{
+            "ReferLink":"https://pasino.com/?user_id=44005"
+        }
+    },
+    "ADSLinks":{
+        "AADS":{
+            "Website":"",
+            "ADSLink":"<iframe data-aa='1738316' src='//ad.a-ads.com/1738316?size=728x90' style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;' ></iframe>"
+        },
+        "Ad2bitcoin":{
+            "Website":"",
+            "ADSLink":"<iframe data-aa='ads-001' src='https://ad2bitcoin.com/ad.php?ref=dell001&width=728' marginwidth='0' marginheight='0' width='728' height='90' scrolling='no' border='0' frameborder='0'></iframe>"
+        },
+        "Traffic2bitcoin":{
+            "Website":"",
+            "ADSLink":"<iframe data-aa='ads-002' src='https://traffic2bitcoin.com/ptp.php?ref=dellnct&amp;sitetype=1' marginwidth='0' marginheight='0' width='728' height='90' scrolling='no' border='0' frameborder='0'></iframe>"
+        },
+        "Adsmodern":{
+            "Website":"",
+            "ADSLink":"<iframe data-aa='ads-003' src='//nevtkm.com/serve/show.php?a=5238&b=728x90' style='width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;' ></iframe>"
+        },
+        "Adsluna":{
+            "Website":"",
+            "ADSLink":"<iframe data-aa='ads-004' src='//mdgzg.com/serve/show.php?a=3095&b=728x90' width='728' height='90' frameBorder='0' scrolling='no' marginwidth='0' marginheight='0'></iframe>"
+        },
+        "Adskeeper":{
+            "Website":"https://www.adskeeper.com/",
+            "ADSReferLink":"<div id='M703091ScriptRootC1118613'></div><script src='https://jsc.adskeeper.co.uk/n/c/ncttechnology.net.1118613.js' async></script>"
+        },
+        "Admaven":{
+            "Website":"https://ad-maven.com",
+            "ADSReferLink":"<script data-cfasync='false' src='//dkre4lyk6a9bt.cloudfront.net/?lerkd=934839'></script>"
+        }
+    }
+ }
