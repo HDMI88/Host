@@ -10,7 +10,7 @@
     "Promotions": "",
     "NCTDicebot":{
         "LatestVersion": "1.2.4",
-        "LatestScript": "080921",
+        "LatestScript": "050621",
         "Notification_1": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://www.ncttechnology.net/help.html', '_blank');\">👉 CLICK HERE: You must read all lines in 'TUTORIAL' carefully, think and follow. If not... You will lose and then you'll find ways to blame my bot.</div>",
         "Notification_2": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3Arl1u4', '_blank');\">👉 CLICK HERE: Recommended dice sites, a lot of people are playing. Unlimited bet amount, fast speed. Support a lot of crypto: BTC, BCH, ETH, LTC, DOGE, XML, XRP, TRX, USDT, LINK, SHIB...</div>",
         "Notification_3": "<div style=\"color: #1c76a6; font-size: 15px; font-family: 'NotoSans-Bold' !important; font-weight: bold !important; cursor: pointer;\" onclick=\"window.open('https://bit.ly/3qTPkFo', '_blank');\">👉 CLICK HERE: Recommended wallet (buy, sell, store, trading and exchange instantly between any cryptO). Low fees, fast, 2-step security, simple and easy to use, mobile app. I'm using it, great experience</div>",
