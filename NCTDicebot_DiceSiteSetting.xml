@@ -8,7 +8,17 @@
   <add key = "casinoroyale_bet_RollDice" value = "div#root div.action > button" />
   <add key = "casinoroyale_bet_DisableSound" value = "Tiger" />
   <add key = "casinoroyale_bet_EnableFastBet" value = "Tiger" />
-  <add key = "EndSetting" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
+  <add key = "_EndSetting_" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
+  <add key = "wintomato_com_GetBalance" value = "Tiger" />
+  <add key = "wintomato_com_GetCurrency" value = "var abc=document.querySelector('div#app div.balance > div > header > div > button'); var reactHandlerKey=Object.keys(abc).filter(function(item){return item.indexOf('__reactInternalInstance')>=0});reactHandler=abc[reactHandlerKey[0]]; return reactHandler.key;" />
+  <add key = "wintomato_com_GetRoll" value = "Tiger" />
+  <add key = "wintomato_com_SetBetAmount" value = "Tiger" />
+  <add key = "wintomato_com_SetChance" value = "Tiger" />
+  <add key = "wintomato_com_RollHiLow" value = "Tiger" />
+  <add key = "wintomato_com_RollDice" value = "Tiger" />
+  <add key = "wintomato_com_DisableSound" value = "Tiger" />
+  <add key = "wintomato_com_EnableFastBet" value = "Tiger" />
+  <add key = "_EndSetting_" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
   <add key = "casinoroyale_bet_GetBalance" value = "Tiger" />
   <add key = "casinoroyale_bet_GetCurrency" value = "Tiger" />
   <add key = "casinoroyale_bet_GetRoll" value = "Tiger" />
@@ -18,7 +28,7 @@
   <add key = "casinoroyale_bet_RollDice" value = "Tiger" />
   <add key = "casinoroyale_bet_DisableSound" value = "Tiger" />
   <add key = "casinoroyale_bet_EnableFastBet" value = "Tiger" />
-  <add key = "EndSetting" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
+  <add key = "_EndSetting_" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
   <add key = "casinoroyale_bet_GetBalance" value = "Tiger" />
   <add key = "casinoroyale_bet_GetCurrency" value = "Tiger" />
   <add key = "casinoroyale_bet_GetRoll" value = "Tiger" />
@@ -28,15 +38,5 @@
   <add key = "casinoroyale_bet_RollDice" value = "Tiger" />
   <add key = "casinoroyale_bet_DisableSound" value = "Tiger" />
   <add key = "casinoroyale_bet_EnableFastBet" value = "Tiger" />
-  <add key = "EndSetting" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
-  <add key = "casinoroyale_bet_GetBalance" value = "Tiger" />
-  <add key = "casinoroyale_bet_GetCurrency" value = "Tiger" />
-  <add key = "casinoroyale_bet_GetRoll" value = "Tiger" />
-  <add key = "casinoroyale_bet_SetBetAmount" value = "Tiger" />
-  <add key = "casinoroyale_bet_SetChance" value = "Tiger" />
-  <add key = "casinoroyale_bet_RollHiLow" value = "Tiger" />
-  <add key = "casinoroyale_bet_RollDice" value = "Tiger" />
-  <add key = "casinoroyale_bet_DisableSound" value = "Tiger" />
-  <add key = "casinoroyale_bet_EnableFastBet" value = "Tiger" />
-  <add key = "EndSetting" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
+  <add key = "_EndSetting_" value = "End Setting Site -------------------------------------------------------------------------------------------------------------------------------------------" />
 </appSettings>
