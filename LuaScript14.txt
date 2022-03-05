@@ -5,97 +5,514 @@
 -- Similar to other coins.
 -- PLEASE STOP PLAYING WHEN PROFIT CHART OR MARKET IS FLAT OR SIDEWAYS.
 
--- SCRIPT 04
+-- SCRIPT 14
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
-
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+chance       = 29.99
+base         = balance * 0.00000010
+prebet       = balance * 0.00000010
+nextbet      = prebet
+enablezz     = true
+enablesrc    = true
+losecount    = 0
+betcount     = 1
+investtarget = .01
+startbalance = balance 
+investprofit = 1
+lastprofit   = profit
+lastprofits  = betcount
+stopprofit   = 1
+target       = balance+(balance*stopprofit/100)
 
 function dobet()
-
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
+    investprofit += currentprofit
+        print("")
+        print("> Balance            "..string.format("%.8f",balance))
+        print("> Profit                 "..string.format("%.8f",profit))
+        print("> Total bets         "..(bets).." BETS")
+        print("> CHANCE          "..(chance).." CHANCE")
+        print("> Current Streak  "..(losecount).." STREAK")
+        print("> Bet Size            "..string.format("%.8f",nextbet))
+        print("")
+        if win then
+        nextbet   = prebet
+        losecount += 1
+        betcount += 2 
+        if profit-lastprofit  > 0.00000001 then
+            lastprofit = profit
+            losecount  = 0
+            --stop()
+            --alarm()
+            resetseed()
         end
-    end
-
-    bethigh = true
-
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
-    end
-
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
-
-    if base2 < base1 then
-        base2 = base1
-    end
-
-    chance = math.random(30, 55)
-
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
+        if betcount-lastprofits  > 50000 then
+            lastprofits = betcount
+            stop()
+            resetseed()
+        end
+        if (balance >= target) then  
+                print("You Win")
+                stop()
+                --withdraw(1,"") 
+        end
+            if (investprofit > investtarget) then
+                invest(balance - startbalance)
+                startbalance = balance 
+                
+        end
     else
-        bethigh = false
+            losecount += 1
+            betcount += 2
+        nextbet = prebet
+        bethigh = !bethigh
+        resetseed();
     end
+    if (losecount > 0) then
+        nextbet = balance*.00000001
+        chance  = 9.99 
+        
+    end 
+    if (losecount > 7) then
+        chance  = 9.90
+        nextbet = previousbet * 1.200
 
-    if profit > 0 then
-        base2 = base1
     end
+    if (losecount > 8) then
+        chance  = 9.89
+        nextbet = previousbet * 1.099
 
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
     end
+    if (losecount > 9) then
+        chance  = 9.88
+        nextbet = previousbet*1.098
 
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
     end
-
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
+    if (losecount > 10) then
+        chance  = 9.87
+        nextbet = previousbet*1.097
     end
+    if (losecount > 11) then
+        chance  = 9.86
+        nextbet = previousbet*1.096
 
-    if currentstreak == -2 then
-        base2 = previousbet
     end
-
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
+    if (losecount > 12) then
+        chance  = 9.85
+        nextbet = previousbet*1.095
     end
-
-    if currentstreak == -3 then
-        base2 = previousbet
+    if (losecount > 13) then
+        chance  = 9.84
+        nextbet = previousbet*1.094
     end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
+    if (losecount > 14) then
+        chance  = 9.83
+        nextbet = previousbet*1.093
     end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
+    if (losecount > 15) then
+        chance  = 9.82
+        nextbet = previousbet*1.092
+    end
+    if (losecount > 16) then
+        chance  = 9.81
+        nextbet = previousbet*1.091
+    end
+    if (losecount > 17) then
+        chance  = 9.80
+        nextbet = previousbet*1.190
+    end
+    if (losecount > 18) then
+        chance  = 9.78
+        nextbet = previousbet*1.089
+    end
+    if (losecount > 19) then
+        chance  = 9.76
+        nextbet = previousbet*1.088
+    end
+    if (losecount > 20) then
+        chance  = 9.74
+        nextbet = previousbet*1.087
+    end
+    if (losecount > 21) then
+        chance  = 9.72
+        nextbet = previousbet*1.086
+    end
+        if (losecount > 22) then
+        chance  = 9.70
+        nextbet = previousbet*1.085
+    end
+    if (losecount > 23) then
+        chance  = 9.65
+        nextbet = previousbet*1.084
+    end
+    if (losecount > 24) then
+        chance  = 9.60
+        nextbet = previousbet*1.083
+    end
+    if (losecount > 25) then
+        chance  = 9.55
+        nextbet = previousbet*1.082
+    end
+    if (losecount > 26) then
+        chance  = 9.50
+        nextbet = previousbet*1.081
+    end
+    if (losecount > 27) then
+        chance  = 9.45
+        nextbet = previousbet*1.180
+    end
+    if (losecount > 28) then
+        chance  = 9.40
+        nextbet = previousbet*1.079
+    end
+        if (losecount > 29) then
+        chance  = 9.35
+        nextbet = previousbet*1.078
+    end
+    if (losecount > 30) then
+        chance  = 9.30
+        nextbet = previousbet*1.077
+    end
+    if (losecount > 31) then
+        chance  = 9.25
+        nextbet = previousbet*1.076
+    end
+    if (losecount > 32) then
+        chance  = 9.20
+        nextbet = previousbet*1.075
+    end
+    if (losecount > 33) then
+        chance  = 9.15
+        nextbet = previousbet*1.074
+    end
+    if (losecount > 34) then
+        chance  = 9.10
+        nextbet = previousbet*1.073
+    end
+    if (losecount > 35) then
+        chance  = 9.05
+        nextbet = previousbet*1.072
+    end
+    if (losecount > 36) then
+        chance  = 9.00
+        nextbet = previousbet*1.071
+    end
+    if (losecount > 37) then
+        chance  = 8.95
+        nextbet = previousbet*1.170
+    end
+    if (losecount > 38) then
+        chance  = 8.90
+        nextbet = previousbet*1.069
+    end
+    if (losecount > 39) then
+        chance  = 8.85
+        nextbet = previousbet*1.068
+    end
+    if (losecount > 40) then
+        chance  = 8.80
+        nextbet = previousbet*1.067
+    end
+    if (losecount > 41) then
+        chance  = 8.75
+        nextbet = previousbet*1.066
+    end
+    if (losecount > 42) then
+        chance  = 8.70
+        nextbet = previousbet*1.065
+    end
+    if (losecount > 43) then
+        chance  = 8.65
+        nextbet = previousbet*1.064
+    end
+    if (losecount > 44) then
+        chance  = 8.60
+        nextbet = previousbet*1.063
+    end
+    if (losecount > 45) then
+        chance  = 8.55
+        nextbet = previousbet*1.062
+    end
+    if (losecount > 46) then
+        chance  = 8.50
+        nextbet = previousbet*1.061
+    end
+    if (losecount > 47) then
+        chance  = 8.45
+        nextbet = previousbet*1.160
+    end
+    if (losecount > 48) then
+        chance  = 8.40
+        nextbet = previousbet*1.059
+    end
+    if (losecount > 49) then
+        chance  = 8.35
+        nextbet = previousbet*1.058
+    end
+    if (losecount > 50) then
+        chance  = 8.30
+        nextbet = previousbet*1.057
+    end
+    if (losecount > 51) then
+        chance  = 8.25
+        nextbet = previousbet*1.056
+    end
+    if (losecount > 52) then
+        chance  = 8.20
+        nextbet = previousbet*1.055
+    end
+    if (losecount > 53) then
+        chance  = 8.15
+        nextbet = previousbet*1.54
+    end
+    if (losecount > 54) then
+        chance  = 8.10
+        nextbet = previousbet*1.53
+    end
+    if (losecount > 55) then
+        chance  = 8.05
+        nextbet = previousbet*1.52
+    end
+    if (losecount > 56) then
+        chance  = 8.00
+        nextbet = previousbet*1.051
+    end
+    if (losecount > 57) then
+        chance  = 7.95
+        nextbet = previousbet*1.150
+    end
+    if (losecount > 58) then
+        chance  = 7.90
+        nextbet = previousbet*1.100
+    end
+    if (losecount > 59) then
+        chance  = 7.85
+        nextbet = previousbet*1.099
+    end
+    if (losecount > 60) then
+        chance  = 7.80
+        nextbet = previousbet*1.098
+    end
+    if (losecount > 61) then
+        chance  = 7.75
+        nextbet = previousbet*1.097
+    end
+    if (losecount > 62) then
+        chance  = 7.70
+        nextbet = previousbet*1.096
+    end
+    if (losecount > 63) then
+        chance  = 7.65
+        nextbet = previousbet*1.095
+    end
+    if (losecount > 64) then
+        chance  = 7.60
+        nextbet = previousbet*1.094
+    end
+    if (losecount > 65) then
+        chance  = 7.55
+        nextbet = previousbet*1.093
+    end
+    if (losecount > 66) then
+        chance  = 7.50
+        nextbet = previousbet*1.092
+    end
+    if (losecount > 67) then
+        chance  = 7.45
+        nextbet = previousbet*1.191
+    end
+    if (losecount > 68) then
+        chance  = 7.40
+        nextbet = previousbet*1.090
+    end
+    if (losecount > 69) then
+        chance  = 7.35
+        nextbet = previousbet*1.089
+    end
+    if (losecount > 70) then
+        chance  = 7.30
+        nextbet = previousbet*1.088
+    end
+    if (losecount > 71) then
+        chance  = 7.25
+        nextbet = previousbet*1.087
+    end
+    if (losecount > 72) then
+        chance  = 7.20
+        nextbet = previousbet*1.086
+    end
+    if (losecount > 73) then
+        chance  = 7.15
+        nextbet = previousbet*1.085
+    end
+    if (losecount > 74) then
+        chance  = 7.10
+        nextbet = previousbet*1.084
+        end
+    if (losecount > 75) then
+        chance  = 7.05
+        nextbet = previousbet*1.083
+    end
+    if (losecount > 76) then
+        chance  = 7.00
+        nextbet = previousbet*1.082
+    end
+    if (losecount > 77) then
+        chance  = 6.95
+        nextbet = previousbet*1.181
+    end
+    if (losecount > 78) then
+        chance  = 6.90
+        nextbet = previousbet*1.080
+    end
+    if (losecount > 79) then
+        chance  = 6.85
+        nextbet = previousbet*1.079
+    end
+    if (losecount > 80) then
+        chance  = 6.80
+        nextbet = previousbet*1.078
+    end
+    if (losecount > 81) then
+        chance  = 6.75
+        nextbet = previousbet*1.077
+    end
+    if (losecount > 82) then
+        chance  = 6.70
+        nextbet = previousbet*1.076
+    end
+    if (losecount > 83) then
+        chance  = 6.65
+        nextbet = previousbet*1.075
+    end
+    if (losecount > 84) then
+        chance  = 6.60
+        nextbet = previousbet*1.074
+    end
+    if (losecount > 85) then
+        chance  = 6.55
+        nextbet = previousbet*1.073
+    end
+    if (losecount > 86) then
+        chance  = 6.50
+        nextbet = previousbet*1.072
+    end
+    if (losecount > 87) then
+        chance  = 6.45
+        nextbet = previousbet*1.171
+    end
+    if (losecount > 88) then
+        chance  = 6.40
+        nextbet = previousbet*1.070
+    end
+    if (losecount > 89) then
+        chance  = 6.35
+        nextbet = previousbet*1.069
+    end
+    if (losecount > 90) then
+        chance  = 6.30
+        nextbet = previousbet*1.068
+    end
+    if (losecount > 91) then
+        chance  = 6.25
+        nextbet = previousbet*1.067
+    end
+    if (losecount > 92) then
+        chance  = 6.20
+        nextbet = previousbet*1.066
+    end
+    if (losecount > 93) then
+        chance  = 6.15
+        nextbet = previousbet*1.065
+    end
+    if (losecount > 94) then
+        chance  = 6.10
+        nextbet = previousbet*1.064
+    end
+    if (losecount > 95) then
+        chance  = 6.05
+        nextbet = previousbet*1.063
+    end
+    if (losecount > 96) then
+        chance  = 6.00
+        nextbet = previousbet*1.062
+    end
+    if (losecount > 97) then
+        chance  = 5.95
+        nextbet = previousbet*1.161
+    end
+    if (losecount > 98) then
+        chance  = 5.90
+        nextbet = previousbet*1.060
+    end
+    if (losecount > 99) then
+        chance  = 5.85
+        nextbet = previousbet*1.059
+    end
+    if (losecount > 100) then
+        chance  = 5.80
+        nextbet = previousbet*1.058
+    end
+    if (losecount > 101) then
+        chance  = 5.75
+        nextbet = previousbet*1.057
+    end
+    if (losecount > 102) then
+        chance  = 5.70
+        nextbet = previousbet*1.056
+    end
+    if (losecount > 103) then
+        chance  = 5.65
+        nextbet = previousbet*1.055
+    end
+    if (losecount > 104) then
+        chance  = 5.60
+        nextbet = previousbet*1.054
+    end
+    if (losecount > 105) then
+        chance  = 5.55
+        nextbet = previousbet*1.053
+    end
+    if (losecount > 106) then
+        chance  = 5.50
+        nextbet = previousbet*1.052
+    end
+    if (losecount > 107) then
+        chance  = 5.45
+        nextbet = previousbet*1.051
+    end
+    if (losecount > 108) then
+        chance  = 5.40
+        nextbet = previousbet*1.050
+    end
+    if (losecount > 109) then
+        chance  = 5.35
+        nextbet = previousbet*1.100
+    end
+    if (losecount > 110) then
+        chance  = 5.30
+        nextbet = previousbet*1.095
+    end
+    if (losecount > 111) then
+        chance  = 5.25
+        nextbet = previousbet*1.090
+    end
+    if (losecount > 112) then
+        chance  = 5.20
+        nextbet = previousbet*1.085
+    end
+    if (losecount > 113) then
+        chance  = 5.15
+        nextbet = previousbet*1.080
+    end
+    if (losecount > 114) then
+        chance  = 5.10
+        nextbet = previousbet*1.070
+    end
+    if (losecount > 115) then
+        chance  = 5.05
+        nextbet = previousbet*1.060
+    end
+    if (losecount > 116) then
+        chance  = 5.00
+        nextbet = previousbet*1.055
+    end
 end
