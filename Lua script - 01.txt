@@ -40,7 +40,7 @@ function dobet()
     if balance >= target then
         stop()
         print("\n\n")
-        print (">>> Profit reached: " .. profit)
+        print(">>> Profit reached: "..string.format("%.8f",profit))
         print("\n\n")
     end
 
