@@ -1,4 +1,4 @@
-{
+_{
     "Email":"nctgrape@gmail.com",
     "Telegram":"https://t.me/NCTDicebot",
     "TelegramChannel":"https://t.me/NCTDicebot_Channel",
