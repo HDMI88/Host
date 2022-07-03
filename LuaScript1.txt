@@ -50,6 +50,6 @@ function dobet()
     if (balance > maxbal) then stop() end
     if (balance - nextbet < minbal) then stop() end
     
-    print("\n\n")
+    print("-------------------------------------------")
     print("profit "..profits)
 end
