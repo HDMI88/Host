@@ -39,11 +39,10 @@ async function ImportCSS(src)
 }
 
 // Import css style into head tag
-async function ImportCSS_Style(id, data)
+async function ImportCSS_Style(data)
 {
     return new Promise(function(resolve){
         let style = document.createElement('style');
-        style.id = id;
         style.innerText = data;
         style.onload = function(){
             resolve();
