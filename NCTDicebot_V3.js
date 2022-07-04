@@ -17,7 +17,7 @@ var NCTDicebot_ImportedJS_CSS = false;
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
     await ImportDIV(data);
 
-    NCTDicebot_ImportedJS_CSS = false;
+    NCTDicebot_ImportedJS_CSS = true;
     console.log("--> Import JS, CSS successfully");
     window.chrome.webview.postMessage("--> Import JS, CSS successfully");
 })();
