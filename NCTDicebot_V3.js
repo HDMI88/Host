@@ -7,6 +7,7 @@ window.addEventListener('load', async function()
     await ImportDIV(data);
 
     console.log("--> Import Google Analytics successfully");
+    window.chrome.webview.postMessage("--> Import Google Analytics successfully");
 });
 
 // Import Script.
