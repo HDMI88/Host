@@ -16,12 +16,6 @@ var NCTDicebot_ImportedJS_CSS;
     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
     await ImportDIV(data);
-
-    NCTDicebot_ImportedJS_CSS = setInterval(function ()
-    {
-        console.log('--> Import JS, CSS successfully'); 
-        window.chrome.webview.postMessage('--> Import JS, CSS successfully');
-    }, 1000);
 })();
 
 // Import Script.
