@@ -62,6 +62,3 @@ async function ImportDIV(data)
         document.body.appendChild(DIV);
     });
 }
-
-
-
