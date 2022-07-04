@@ -6,7 +6,7 @@ window.addEventListener('load', async function()
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
     await ImportDIV(data);
 
-    console.log("--> Added external div, JS and CSS files successfully");
+    console.log("--> Import Google Analytics successfully");
 });
 
 // Import Script.
@@ -62,3 +62,6 @@ async function ImportDIV(data)
         document.body.appendChild(DIV);
     });
 }
+
+
+
