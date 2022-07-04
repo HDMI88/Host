@@ -1,5 +1,20 @@
-window.addEventListener('load', async function() 
+// window.addEventListener('load', async function() 
+// {
+//     await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
+
+//     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+//     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
+//     await ImportDIV(data);
+
+//     console.log("--> Import Google Analytics successfully");
+//     window.chrome.webview.postMessage("--> Import Google Analytics successfully");
+// });
+
+(async function()
 {
+    await ImportCSS('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/awesome-notifications.css?alt=media&token=2d9a9035-ef59-4f00-bfc7-5e448f12443d');
+    await ImportCSS('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
     await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
 
     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
@@ -8,7 +23,7 @@ window.addEventListener('load', async function()
 
     console.log("--> Import Google Analytics successfully");
     window.chrome.webview.postMessage("--> Import Google Analytics successfully");
-});
+})();
 
 // Import Script.
 async function ImportScript(src)
