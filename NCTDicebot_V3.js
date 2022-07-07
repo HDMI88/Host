@@ -1,7 +1,7 @@
-var NCTDicebot_ImportedJS_CSS;
+var NCTDicebot_ImportedJS_CSS = "No JS and CSS added yet";
 (async function()
 {
-    // Chạy hàm thêm các file JS và CSS cần thiết cho BOT vào trang web hiện tại 
+    // Import JS and CSS
     if (typeof jQuery == 'undefined') await ImportScript('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js');
@@ -17,6 +17,8 @@ var NCTDicebot_ImportedJS_CSS;
     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
     await ImportDIV(data);
+
+    "Added JS and CSS successfully";
 })();
 
 // Import Script.
