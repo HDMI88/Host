@@ -6,11 +6,11 @@
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js');
-    await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/fengari-web.js?alt=media&token=e05a27e0-6ca1-40b9-aead-c68715a90b12');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/awesome-notifications.js?alt=media&token=7e3bc4bc-d6e4-4f51-a5ec-452e45cced54');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/fingerprint.js?alt=media&token=7b276e4e-e456-4951-815a-5bc4e9701d02');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/socket_client.js?alt=media&token=60d20892-b81f-4bc3-aa6e-1544270bfdb3');
+    await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
     await ImportCSS('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/awesome-notifications.css?alt=media&token=2d9a9035-ef59-4f00-bfc7-5e448f12443d');
     await ImportCSS('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
     await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
