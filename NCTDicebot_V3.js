@@ -11,14 +11,14 @@
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
     await ImportCSS('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/awesome-notifications.css?alt=media&token=2d9a9035-ef59-4f00-bfc7-5e448f12443d');
     await ImportCSS('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
-    await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
-    await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
 
     // Don't add JS to BCGame
     if (window.location.hostname.trim().toUpperCase().search("BC.GAME") < 0)
     {
         await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/fingerprint.js?alt=media&token=7b276e4e-e456-4951-815a-5bc4e9701d02');
         await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/socket_client.js?alt=media&token=60d20892-b81f-4bc3-aa6e-1544270bfdb3');
+        await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
+        await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
     }
 
     // 
