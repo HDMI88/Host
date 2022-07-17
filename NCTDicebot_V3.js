@@ -15,10 +15,10 @@
     // Don't add JS to BCGame
     if (window.location.hostname.trim().toUpperCase().search("BC.GAME") < 0)
     {
-        await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/fingerprint.js?alt=media&token=7b276e4e-e456-4951-815a-5bc4e9701d02');
-        await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/socket_client.js?alt=media&token=60d20892-b81f-4bc3-aa6e-1544270bfdb3');
-        await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
-        await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
+        //await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/fingerprint.js?alt=media&token=7b276e4e-e456-4951-815a-5bc4e9701d02');
+        //await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/socket_client.js?alt=media&token=60d20892-b81f-4bc3-aa6e-1544270bfdb3');
+        //await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
+        //await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
     }
 
     // 
