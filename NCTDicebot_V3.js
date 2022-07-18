@@ -1,4 +1,3 @@
-var Added_JS_CSS = false;
 (async function()
 {
     // Import JS and CSS
