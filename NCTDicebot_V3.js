@@ -24,6 +24,7 @@ var Added_JS_CSS = false;
     await ImportDIV(data);
 
     Added_JS_CSS = true;
+    console.log("--> Added_JS_CSS: " + Added_JS_CSS);
     window.chrome.webview.postMessage("Added JS and CSS successfully");
 })();
 
