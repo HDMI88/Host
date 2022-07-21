@@ -1,3 +1,4 @@
+var Added_JS_CSS = false;
 (async function()
 {
     // Chạy hàm thêm các file JS và CSS cần thiết cho BOT vào trang web hiện tại 
