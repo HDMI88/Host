@@ -24,7 +24,7 @@
     // ADS
     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>`;
-    await ImportDIV(data);
+    await ImportDIV("NCT_ADS01", data);
 })();
 
 // Import Script.
@@ -69,10 +69,11 @@ async function ImportCSS_Style(data)
 }
 
 // Import div. src="https://www.youtube.com/embed/${item.id.videoId}"
-async function ImportDIV(data)
+async function ImportDIV(Div_ID,data)
 {
     return new Promise(function(resolve){
         let DIV = document.createElement('div');
+        DIV.id = Div_ID;
         DIV.innerHTML = data;
         DIV.onload = function(){
             resolve();
