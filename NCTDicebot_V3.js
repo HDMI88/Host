@@ -81,3 +81,9 @@ async function ImportDIV(data)
         document.body.appendChild(DIV);
     });
 }
+
+// Check null, undefined, empty
+function stringIsEmpty(value) 
+{
+    return value ? value.toString().trim().length == 0 : true;
+}
