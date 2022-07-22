@@ -19,7 +19,6 @@
     await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
 
     // Added JS and CSS successfullys
-    console.log("--> JS. Added_JS_CSS: " + Added_JS_CSS);
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
     // ADS
