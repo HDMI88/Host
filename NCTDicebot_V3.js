@@ -24,8 +24,8 @@
     // ADS
     var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <iframe src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <iframe width="728px" height="90px" src="https://www.youtube.com/embed/videoseries?list=PLJp5AquCTs4YEX5J8Sa_TLE9iXbWqVoCe&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    <iframe id = "HomePageNCT01" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    <iframe id = "Youtube01" width="728px" height="90px" src="https://www.youtube.com/embed/videoseries?list=PLJp5AquCTs4YEX5J8Sa_TLE9iXbWqVoCe&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
     {
