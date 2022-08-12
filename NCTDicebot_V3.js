@@ -22,15 +22,18 @@
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
     // ADS
-    var data = `<iframe data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <iframe data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    var data = `<iframe id = "ADS01" data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    <iframe id = "ADS02" data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe id = "WebsiteNCT01" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe id = "YouTube01" width="728px" height="90px" src="https://www.youtube.com/embed/videoseries?list=PLJp5AquCTs4YEX5J8Sa_TLE9iXbWqVoCe&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-    
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
     {
         await ImportDIV("NCT_ADS01", data);
-    } 
+    }
+    window.setInterval("ReloadIFrame('ADS01', '//ad.a-ads.com/1738316?size=728x90');", 30000);
+    window.setInterval("ReloadIFrame('ADS02', '//ad.a-ads.com/1738492?size=728x90');", 40000);
+    window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net');", 45000);
+    window.setInterval("ReloadIFrame('YouTube01', 'https://www.youtube.com/embed/videoseries?list=PLJp5AquCTs4YEX5J8Sa_TLE9iXbWqVoCe&autoplay=1&mute=1');", 60000);
 })();
 
 // Import Script.
@@ -92,4 +95,11 @@ async function ImportDIV(Div_ID,data)
 function stringIsEmpty(value) 
 {
     return value ? value.toString().trim().length == 0 : true;
+}
+
+// Auto reload IFrame
+function ReloadIFrame(IFrame_ID, Link) 
+{
+    var frameHolder=document.getElementById(IFrame_ID);
+   frameHolder.src=Link;
 }
