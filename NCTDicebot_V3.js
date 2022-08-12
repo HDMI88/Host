@@ -15,8 +15,8 @@
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
 
     // Google
-    await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
-    await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
+    //await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
+    //await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
 
     // Added JS and CSS successfullys
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
