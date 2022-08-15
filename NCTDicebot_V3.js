@@ -29,7 +29,7 @@
     window.setInterval("ReloadIFrame('ADS01', '//ad.a-ads.com/1738316?size=728x90');", 60000);
     window.setInterval("ReloadIFrame('ADS02', '//ad.a-ads.com/1738492?size=728x90');", 60000);
     window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net');", 60000);
-    window.setInterval("ReloadIFrame('COSTV01', 'https://cos.tv/videos/play/38266382005604352');", 180000);
+    window.setInterval("ReloadIFrame('COSTV01', 'https://cos.tv/videos/play/38266382005604352');", 1320000);
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
     {
         await ImportDIV("NCT_ADS01", data);
