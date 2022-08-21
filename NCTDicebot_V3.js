@@ -25,11 +25,11 @@
     var data = `<iframe id = "ADS01" data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe id = "ADS02" data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe id = "WebsiteNCT01" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <video id = 'COSTV01' width='728' height='90' autoplay muted><source src='https://videocdn.cos.tv/video/38266387417320448.mp4?Expires=1660679851&Signature=a1ihI8Q1Fpuf38QdDg-0Afvec9z1RH-DdwgGmWsPyU~4ULtXNMeYVqLUsdFQap~2kezMHIskSSiAOQoQAbYXwAUsTFqs7V1eDq7zdUbupf2AVTytYhoEB30~JjnmV4RGmrUA1k~WbtoN-p3TLsJZvSxdxmIdIsaBhW1DYplyVo7Bj~xNbczvAhDCnoPWQUlXVli3yoZJmQXbxiKDibDbJka1GLFFp8g5t4w1LtDx3VVQG1jvAGH-VQU5LTB3BMNw7xs5P9lnR9GlH9EhkQdlfXrNs7BrQ9pX5CafNQ37uLc6lFZkE1FLn0xGLmSo5mlqHYVaBU472Y1rsXGnISOGGA__&Key-Pair-Id=APKAJ2AQKNFFAUYSAMUQ' type='video/mp4'></video>`;
+    `;
     window.setInterval("ReloadIFrame('ADS01', '//ad.a-ads.com/1738316?size=728x90');", 60000);
     window.setInterval("ReloadIFrame('ADS02', '//ad.a-ads.com/1738492?size=728x90');", 60000);
     window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net');", 60000);
-    window.setInterval("ReloadIFrame('COSTV01', 'https://videocdn.cos.tv/video/38266387417320448.mp4?Expires=1660679851&Signature=a1ihI8Q1Fpuf38QdDg-0Afvec9z1RH-DdwgGmWsPyU~4ULtXNMeYVqLUsdFQap~2kezMHIskSSiAOQoQAbYXwAUsTFqs7V1eDq7zdUbupf2AVTytYhoEB30~JjnmV4RGmrUA1k~WbtoN-p3TLsJZvSxdxmIdIsaBhW1DYplyVo7Bj~xNbczvAhDCnoPWQUlXVli3yoZJmQXbxiKDibDbJka1GLFFp8g5t4w1LtDx3VVQG1jvAGH-VQU5LTB3BMNw7xs5P9lnR9GlH9EhkQdlfXrNs7BrQ9pX5CafNQ37uLc6lFZkE1FLn0xGLmSo5mlqHYVaBU472Y1rsXGnISOGGA__&Key-Pair-Id=APKAJ2AQKNFFAUYSAMUQ');", 1320000);
+    
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
     {
         await ImportDIV("NCT_ADS01", data);
