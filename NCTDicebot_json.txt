@@ -23,6 +23,9 @@
     "Biswap":{
         "ReferLink":"https://biswap.org/?ref=b3f8dc9ca443ca530f7f"
     },
+    "CosTV":{
+        "ReferLink":"https://cos.tv/account/register?invite_code=GUJWZ"
+    },
     "Binance":{
         "ReferLink":"https://accounts.binance.com/en/register?ref=180242076",
         "BTCAddress":"136WLYVaYnsSgWP34xXfBJPwXQqnVmBRzn",
