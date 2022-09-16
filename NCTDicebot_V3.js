@@ -14,20 +14,16 @@
     await ImportCSS('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
 
-    // Google
-    await ImportScript('https://www.googletagmanager.com/gtag/js?id=UA-126043411-3');
-    await ImportScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5001754967925515');
-
     // Added JS and CSS successfullys
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
     // ADS
-    var data = `<iframe id = "ADS01" data-aa="1738316" src="//ad.a-ads.com/1738316?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <iframe id = "ADS02" data-aa="1738492" src="//ad.a-ads.com/1738492?size=728x90" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    var data = `<iframe id = "ADS01" data-aa='1738316' loading='lazy' src='//ad.a-ads.com/1738316?size=970x90' style='width:970px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+    <iframe id = "ADS02" data-aa='1738492' loading='lazy' src='//ad.a-ads.com/1738492?size=970x90' style='width:970px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
     <iframe id = "WebsiteNCT01" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     `;
-    window.setInterval("ReloadIFrame('ADS01', '//ad.a-ads.com/1738316?size=728x90');", 120000);
-    window.setInterval("ReloadIFrame('ADS02', '//ad.a-ads.com/1738492?size=728x90');", 120000);
+    window.setInterval("ReloadIFrame('ADS01', '//ad.a-ads.com/1738316?size=728x90');", 600000);
+    window.setInterval("ReloadIFrame('ADS02', '//ad.a-ads.com/1738492?size=728x90');", 600000);
     window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net');", 600000);
     
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
