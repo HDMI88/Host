@@ -18,14 +18,12 @@
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
     // ADS
-    var data = `<iframe id="ADS01" src='https://compresssavvydetected.com/daycg0ai?key=9eef35bf6c9f720fe20c859c997ce701' style='width:970px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-    <iframe id="ADS02" src='http://intorterraon.com/4/5391948' style='width:970px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-    <iframe id="ADS03" src='https://linkonclick.com/jump/next.php?r=6277554' style='width:970px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
-    <iframe id="WebsiteNCT01" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    var data = `
+    <iframe id="WebsiteNCT01" src="https://www.ncttechnology.net/KT.html" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     `;
-    window.setInterval("ReloadIFrame('ADS01', 'https://compresssavvydetected.com/daycg0ai?key=9eef35bf6c9f720fe20c859c997ce701');", 60000);
-    window.setInterval("ReloadIFrame('ADS02', 'http://intorterraon.com/4/5391948');", 60000);
-    window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net');", 180000);
+    window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net/KT.html');", 60000);
+    window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
     
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
     {
