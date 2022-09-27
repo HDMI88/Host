@@ -19,10 +19,8 @@
 
     // ADS
     var data = `
-    <iframe id="WebsiteNCT01" src="https://www.ncttechnology.net/KT.html" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
     `;
-    window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net/KT.html');", 60000);
     window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
     
     if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
