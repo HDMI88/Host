@@ -2,6 +2,7 @@
 {
     // Add JS, CSS
     if (typeof jQuery == 'undefined') await ImportScript('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
+    await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.0/axios.min.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js');
     await ImportScript('https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
