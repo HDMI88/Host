@@ -5,97 +5,58 @@
 -- Similar to other coins.
 -- PLEASE STOP PLAYING WHEN PROFIT CHART OR MARKET IS FLAT OR SIDEWAYS.
 
--- SCRIPT 04
+-- SCRIPT 19
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
-
-base2        = base1
-nextbet      = base
-bethigh      = false
-balance2     = balance
-multi        = 1.18
+chance   = 98
+bethigh  = true
+basebet  = balance/6500 -- use above 5000 for safe
+nextbet  = basebet
+increase = 2.88
+countH   = 0
+countL   = 0
 
 function dobet()
+ 
+   
+ 
+  if (win) then
+    nextbet = basebet
+    chance  = 98
+  else
+   if ( chance == 98 ) then
+        nextbet=basebet
+   else 
+      nextbet = previousbet*increase
+  end 
+  end
 
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
+if (lastBet.roll > 50) then
+       countL= 1 + countL
+       countH=0
+       if  ( countL > 7 ) then -- use 8 for safe
+      chance  = 62
+      bethigh = false
+      if ( profit > 0 ) then
+          nextbet = balance/1400
+      else
+          nextbet = profit* (-2)
+      end
+      countL  = 0
     end
-
-    bethigh = true
-
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
+  end
+if (lastBet.roll < 50) then 
+       countH= 1 + countH
+       countL=0
+       if  ( countH > 7 ) then -- use 8 for safe
+      chance  = 62
+      bethigh = true
+      if ( profit > 0 ) then
+          nextbet = balance/1400
+      else
+          nextbet = profit* (-2)
+      end
+      countH  = 0
     end
+  end
 
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
-    end
-
-    if base2 < base1 then
-        base2 = base1
-    end
-
-    chance = math.random(30, 55)
-
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
-    end
-
-    if profit > 0 then
-        base2 = base1
-    end
-
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
-    end
-
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
-    end
-
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
-    end
-
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
 end
