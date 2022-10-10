@@ -5,97 +5,285 @@
 -- Similar to other coins.
 -- PLEASE STOP PLAYING WHEN PROFIT CHART OR MARKET IS FLAT OR SIDEWAYS.
 
--- SCRIPT 04
+-- SCRIPT 18
 
-chance       = 50                    
-base         = balance * 0.00000010 
-base1        = balance * 0.00000020          
-target       = balance * 1.1 -- Set target profit: 1.1 = 10%, 1.2 = 20%, 1.3 = 30%, 2.0 = 100%
-
-base2        = base1
-nextbet      = base
+min          = 1
+max          = 81
+chance       = math.random(min, max)
 bethigh      = false
-balance2     = balance
-multi        = 1.18
+basebet      = balance/4000000
+nextbet      = basebet
+StopOnProfit = balance*10
+ 
+function dobet() 
+   
+     if profit > StopOnProfit then 
+         stop();
+    end
+     
+     if currentstreak%5==0 and win then
+        resetseed();
+        chance  = math.random(min, max)
+    end
+    
+if (win) then 
+    nextbet = balance/4000000
+    chance  = math.random(min, max)
+    bethigh = !bethigh
+else
 
-function dobet()
-
-    if balance > balance2 then
-        base2    = base * 1.5
-        balance2 = balance
-    else
-        base2 = balance2 - balance
-        if base2 < base * 1.5 then
-            base2 = base * 1.5
-        end
+    if ( chance == 81) then
+        nextbet = previousbet*5.65000
+    end
+    if ( chance == 80) then
+        nextbet = previousbet*5.30000
+    end
+    if ( chance == 79) then
+        nextbet = previousbet*5.10000
+    end
+    if ( chance == 78) then
+        nextbet = previousbet*4.80000
+    end
+    if ( chance == 77) then
+        nextbet = previousbet*4.60000
+    end
+    if ( chance == 76) then
+        nextbet = previousbet*4.40000
+    end
+    if ( chance == 75) then
+        nextbet = previousbet*4.20000
+    end
+    if ( chance == 74) then
+        nextbet = previousbet*4.10000
+    end
+    if ( chance == 73) then
+        nextbet = previousbet*4.00000
+    end
+    if ( chance == 72) then
+        nextbet = previousbet*3.75000
+    end
+    if ( chance == 71) then
+        nextbet = previousbet*3.65
+    end
+    if ( chance == 70) then
+        nextbet = previousbet*3.5
+    end
+    if ( chance == 69) then
+        nextbet = previousbet*3.4
+    end
+    if ( chance == 68) then
+        nextbet = previousbet*3.3
+    end
+    if ( chance == 67) then
+        nextbet = previousbet*3.2
+    end
+    if ( chance == 66) then
+        nextbet = previousbet*3.00
+    end
+    if ( chance == 65) then
+        nextbet = previousbet*2.93
+    end
+    if ( chance == 64) then
+        nextbet = previousbet*2.90
+    end
+    if ( chance == 63) then
+        nextbet = previousbet*2.80
+    end
+    if ( chance == 62) then
+        nextbet = previousbet*2.71
     end
 
-    bethigh = true
-
-    if balance < nextbet then
-        stop()
-        print(balance)
-        print("You lose!")
+    if ( chance == 61) then
+        nextbet = previousbet*2.71
+    end
+    if ( chance == 60) then
+        nextbet = previousbet*2.7
+    end
+    if ( chance == 59) then
+        nextbet = previousbet*2.65
+    end
+    if ( chance == 58) then
+        nextbet = previousbet*2.52
+    end
+    if ( chance == 57) then
+        nextbet = previousbet*2.5
+    end
+    if ( chance == 56) then
+        nextbet = previousbet*2.5
+    end
+    if ( chance == 55) then
+        nextbet = previousbet*2.4
     end
 
-    if balance >= target then
-        stop()
-        print("\n\n")
-        print (">>> Profit reached: " .. profit)
-        print("\n\n")
+    if ( chance == 54) then
+        nextbet = previousbet*2.3
     end
 
-    if base2 < base1 then
-        base2 = base1
+    if ( chance == 53) then
+        nextbet = previousbet*2.2
     end
 
-    chance = math.random(30, 55)
-
-    if math.random(1, 3) % 2 == 0 then
-        bethigh = true
-    else
-        bethigh = false
+    if ( chance == 52) then
+        nextbet = previousbet*2.15
+    end
+    if ( chance == 51) then
+        nextbet = previousbet*2.12
+    end
+    if ( chance == 50) then
+        nextbet = previousbet*2.1
     end
 
-    if profit > 0 then
-        base2 = base1
+    if ( chance == 49) then
+        nextbet = previousbet*2.04
+    end
+    if ( chance == 48) then
+        nextbet = previousbet*2.02
+    end
+    if ( chance == 47) then
+        nextbet = previousbet*2.00
+    end
+    if ( chance == 46) then
+        nextbet = previousbet*1.97
+    end
+    if ( chance == 45) then
+        nextbet = previousbet*1.96
+    end
+    if ( chance == 44) then
+        nextbet = previousbet*1.94
+    end
+    if ( chance == 43) then
+        nextbet = previousbet*1.93
+    end
+    if ( chance == 42) then
+        nextbet = previousbet*1.89
+    end
+    if ( chance == 41) then
+        nextbet = previousbet*1.88
+    end
+    if ( chance == 40) then
+        nextbet = previousbet*1.84
+    end
+    if ( chance == 39) then
+        nextbet = previousbet*1.80
+    end
+    if ( chance == 38) then
+        nextbet = previousbet*1.77
+    end
+    if ( chance == 37) then
+        nextbet = previousbet*1.73
+    end
+    if ( chance == 36) then
+        nextbet = previousbet*1.70
+    end
+    if ( chance == 35) then
+        nextbet = previousbet*1.68
     end
 
-    if win then
-        chance  = math.random(10, 15)
-        nextbet = base
-    else
-        nextbet = previousbet * multi
+    if ( chance == 34) then
+        nextbet = previousbet*1.66
     end
 
-    if currentstreak == -1 then
-        chance  = math.random(10, 15)
-        nextbet = base2 * 1.18
+    if ( chance == 33) then
+        nextbet = previousbet*1.64
+    end
+    if ( chance == 32) then
+        nextbet = previousbet*1.61
+    end
+    if ( chance == 31) then
+        nextbet = previousbet*1.59
+    end
+    if ( chance == 30) then
+        nextbet = previousbet*1.56
+    end
+    if ( chance == 29) then
+        nextbet = previousbet*1.54
+    end
+    if ( chance == 28) then
+        nextbet = previousbet*1.52
+    end
+    if ( chance == 27) then
+        nextbet = previousbet*1.50
+    end
+    if ( chance == 26) then
+        nextbet = previousbet*1.46
+    end
+    if ( chance == 25) then
+        nextbet = previousbet*1.44
+    end
+    if ( chance == 24) then
+        nextbet = previousbet*1.42
+    end
+    if ( chance == 23) then
+        nextbet = previousbet*1.39
+    end
+    if ( chance == 22) then
+        nextbet = previousbet*1.37
+    end
+    if ( chance == 21) then
+        nextbet = previousbet*1.35
+    end
+    if ( chance == 20) then
+        nextbet = previousbet*1.33
+    end
+    if ( chance == 19) then
+        nextbet = previousbet*1.31
+    end
+    if ( chance == 18) then
+        nextbet = previousbet*1.29000
+    end
+    if ( chance == 17) then
+        nextbet = previousbet*1.27500
+    end
+    if ( chance == 16) then
+        nextbet = previousbet*1.255
     end
 
-    if currentstreak == -2 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
+if ( chance == 15) then
+        nextbet = previousbet*1.23
+    end
+if ( chance == 14) then
+        nextbet = previousbet*1.21
+    end
+if ( chance == 13) then
+        nextbet = previousbet*1.19
+    end
+if ( chance == 12) then
+        nextbet = previousbet*1.18
+    end
+if ( chance == 11) then
+        nextbet = previousbet*1.16
+    end
+if ( chance == 10) then
+        nextbet = previousbet*1.14
+    end
+if ( chance == 9) then
+        nextbet = previousbet*1.13
+    end
+if ( chance == 8) then
+        nextbet = previousbet*1.11
+    end
+if ( chance == 7) then
+        nextbet = previousbet*1.095
+    end
+if ( chance == 6) then
+        nextbet = previousbet*1.08
+    end
+if ( chance == 5) then
+        nextbet = previousbet*1.065
+    end
+if ( chance == 4) then
+        nextbet = previousbet*1.05
+    end
+if ( chance == 3) then
+        nextbet = previousbet*1.0375
+    end
+if ( chance == 2) then
+        nextbet = previousbet*1.0245
+    end
+if ( chance == 1) then
+        nextbet = previousbet*1.0125
     end
 
-    if currentstreak == -2 then
-        base2 = previousbet
-    end
 
-    if currentstreak == -3 then
-        chance  = math.random(10, 15)
-        nextbet = previousbet
     end
-
-    if currentstreak == -3 then
-        base2 = previousbet
-    end
-
-    if currentstreak == -4 then
-        nextbet = (balance2 - balance) * multi
-        chance  = math.random(35, 65)
-    end
-
-    print("currentstreak = "..currentstreak)
-    print("chance = "..chance)
 end
