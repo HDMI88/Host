@@ -63,20 +63,28 @@
 
 
 
-✳️ Differences between the lifetime license plans: Pro 1 (150$), Pro 2 (250$) and Pro 3 (500$):
+✳️ Solution to solve this error: 
+1. 👉 Minimum balance for all cryptocurrencies: 0.01. 
+2. 👉 If your balance is lower than 0.01: You must increase your balance to greater than or equal to 0.01. 
+3. 👉 If your balance is higher than or equal to 0.01: You must reduce the bet amount. 
+4. 👉 Bet amount calculation formula: Your balance * 0.00000100. For example: You have 1.1 LTC. Bet amount = 1.1 * 0.00000100 = 0.00000110 LTC.
 
-🔴 Pro 1 (150$):
-	1. 👉 One license is for only one device. You cannot switch devices. For example, when you buy a new computer, you must purchase a new license.
-	2. 👉 In the future, I will update many new dice sites and many new features. Pro 1 (150$) will not be updated all latest features and all latest dice sites. You must purchase a new license to updated all latest features and all latest dice sites.
+✳️ NOTE: 
+1. 👉 Some websites have minimum bet amounts: BCGame, Primedice, Stake... So, if your balance is greater than or equal to 0.01 and you have set up the correct bet amount with the above formula but the bot is still not running, please check the minimum bet amount of the site itself. You must set a bet amount greater than or equal to the minimum bet amount set by that website. At the same time, your bet amount must also follow the formula for calculating the bet amount above.
 
-🟢 Pro 2 (250$):
-	1.  👉 One license is for only one device, however you can switch devices but old device license will be disabled. For example: When you buy a new computer, i will send you a new license for new computer but old license of old computer will be disabled.
-	2. 👉 In the future, I will update many new dice sites and many new features. Pro 2 (250$) will not be updated all latest features and all latest dice sites. You must purchase a new license to updated all latest features and latest dice sites.
-
-🟣 Pro 3 (500$):
-	1. 👉 One license is for only one device, however you can switch devices but old device license will be disabled. For example: When you buy a new computer, i will send you a new license for new computer but old license of old computer will be disabled.
-	2. 👉 In the future, I will update many new dice sites and many new features. Pro 3 (500$) will be updated all latest features and all latest dice sites. You don't have to repurchase.
-
+2. 👉 Recommendation: If your balance is lower than 1 then play sites that have no minimum bet limit. Example: 
+🤖 https://betfury.io/?r=5f80b027546f672d2863f941
+🤖 https://wolf.bet?c=NCTDicebot
+🤖 https://casinoroyale.bet/ref/dmkkd7792
+🤖 https://megaplay.io/?c=KAITK5vIxV9c8VfSTBg6
+🤖 https://starbets.io/ref=UPzeQOTVS5
+🤖 https://luckydiamond.io/r/face001
+🤖 https://pasino.com/?user_id=44005
+🤖 https://cryptoplay.io/?c=face001-445
+🤖 https://bitvest.io?r=102545
+🤖 https://paradice.in/?c=usb001
+🤖 https://jacksclub.io?r=~face001
+🤖 https://sicodice.com/?ref=msi001
 
 
 👉 To prove you bought my script. You must provide these evidence for me:
