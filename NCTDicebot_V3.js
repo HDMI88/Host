@@ -19,15 +19,15 @@
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
     // ADS
-    var data = `
-    <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    `;
-    window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
+    // var data = `
+    // <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    // `;
+    // window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
     
-    if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
-    {
-        await ImportDIV("NCT_ADS01", data);
-    }
+    // if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
+    // {
+    //     await ImportDIV("NCT_ADS01", data);
+    // }
 })();
 
 // Import Script.
