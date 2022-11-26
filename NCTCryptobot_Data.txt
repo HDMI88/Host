@@ -1,4 +1,12 @@
-<div id = "RecoSite_binance_com"> https://accounts.binance.com/en/register?ref=180242076 <p name = "Note"> Recommended </p> ^_End_^ </div>
+<!-- ^_End_^ -->
+<div id = "RecoSite_binance_com">
+    <p id = "Value"> 
+        https://accounts.binance.com/en/register?ref=180242076
+    </p> 
+    <p id = "Note"> Recommended </p> 
+    <!-- ^_End_^ -->
+</div>
+<!-- ^_End_^ -->
 <div id = "RecoSite_biswap_org"> https://biswap.org/?ref=b3f8dc9ca443ca530f7f <p name = "Note"> Recommended </p> ^_End_^ </div>
 <div id = "RecoSite_cloudzy_com"> https://support.cloudzy.com/aff.php?aff=1595 <p name = "Note"> Recommended </p> ^_End_^ </div>
 <div id = "RecoSite_bingx_com"> https://bingx.com/invite/VJM4ZD <p name = "Note"> Recommended </p> ^_End_^ </div>
