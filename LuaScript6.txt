@@ -13,12 +13,20 @@ chance        = 75
 nextbet       = basebet
 bethigh       = false
 MaxBalance    = balance
+StopBalance   = balance * 0.9 -- stop loss 10% of balance. 0.8:  stop loss 20% of balance. 0.7:  stop loss 30% of balance...
 
 function dobet()
     if balance >= targetprofit then
         stop()
         print("\n\n")
         print (">>> Profit reached: " .. string.format("%.8f", profit))
+        print("\n\n")
+    end
+
+    if balance <= StopBalance then
+        stop()
+        print("\n\n")
+        print (">>> Stop loss: " .. string.format("%.8f", StopBalance))
         print("\n\n")
     end
     
