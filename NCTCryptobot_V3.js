@@ -14,21 +14,22 @@
     await ImportCSS('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
     await ImportScript('https://firebasestorage.googleapis.com/v0/b/nct-dicebot-7b956.appspot.com/o/canvasjs.min.js?alt=media&token=234d6a1b-13b7-48f3-a40b-ca24a2ce4cc6');
 
-    // Added JS and CSS successfullys
+    // // Added JS and CSS successfullys
     window.chrome.webview.postMessage("Added JS and CSS successfully"); 
 
-    // ADS
-    var data = `
-    <iframe id="WebsiteNCT01" src="https://www.ncttechnology.net/KT.html" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
-    `;
-    window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net/KT.html');", 60000);
-    window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
+    // // ADS
+    // var data = `
+    // <iframe id="WebsiteNCT01" src="https://www.ncttechnology.net/KT.html" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    // <iframe id="WebsiteNCT02" src="https://www.ncttechnology.net" style="width:728px; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;" ></iframe>
+    // `;
+    // window.setInterval("ReloadIFrame('WebsiteNCT01', 'https://www.ncttechnology.net/KT.html');", 60000);
+    // window.setInterval("ReloadIFrame('WebsiteNCT02', 'https://www.ncttechnology.net');", 180000);
     
-    if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
-    {
-        await ImportDIV("NCT_ADS01", data);
-    }
+    // if (stringIsEmpty(document.querySelector("#NCT_ADS01")) == true)
+    // {
+    //     await ImportDIV("NCT_ADS01", data);
+    // }
+    console.log("Added JS and CSS successfully"); 
 })();
 
 // Import Script.
